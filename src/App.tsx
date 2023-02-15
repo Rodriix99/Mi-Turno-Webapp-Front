@@ -1,12 +1,15 @@
+import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./Component/Navbar";
+import Login from "./Component/Login";
 
-function App() {
+function App(): JSX.Element {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline bg-red-500">HOLA</h1>
-
+    <>
       <Navbar />
-    </div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </>
   );
 }
 
