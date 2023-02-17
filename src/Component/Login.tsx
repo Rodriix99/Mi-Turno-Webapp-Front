@@ -1,10 +1,14 @@
 import { useInput } from "../Hooks/useInput";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 interface FormData {
   email: string;
   password: string;
 }
 
 function Login() {
+  const navigate = useNavigate();
   const { formulario, handleChange } = useInput<FormData>({
     email: "",
     password: "",
@@ -12,13 +16,25 @@ function Login() {
 
   const { email, password } = formulario;
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/api/users/login", {
+        email: email,
+        password: password,
+      })
+      .then((res) => res.data)
+      .then(() => navigate("/home"))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <section>
       <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg">
         <h1 className="font-roboto text-2xl font-bold mt-5 mb-5 text-center ">
           Iniciar sesión
         </h1>
-        <form action="#" method="POST" className="space-y-6 w-full">
+        <form className="space-y-6 w-full" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="email"
