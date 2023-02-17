@@ -1,4 +1,24 @@
+import { useInput } from "../Hooks/useInput";
+
+interface FormData {
+  name: string;
+  dni: number;
+  email: string;
+  password: string;
+  password2: string;
+}
+
 const Register = () => {
+  const { formulario, handleChange } = useInput<FormData>({
+    name: "javier",
+    dni: 4,
+    email: "",
+    password: "",
+    password2: "",
+  });
+
+  const { name, dni, email, password, password2 } = formulario;
+
   return (
     <section className="">
       <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg">
@@ -37,6 +57,8 @@ const Register = () => {
                 <input
                   id="name"
                   name="name"
+                  value={name}
+                  onChange={handleChange}
                   type="text"
                   required
                   className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
@@ -54,6 +76,7 @@ const Register = () => {
                 <input
                   id="dni"
                   name="dni"
+                  onChange={handleChange}
                   type="text"
                   required
                   className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
@@ -72,6 +95,7 @@ const Register = () => {
               <input
                 id="email"
                 name="email"
+                onChange={handleChange}
                 type="email"
                 required
                 className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
@@ -90,6 +114,7 @@ const Register = () => {
                 <input
                   id="password"
                   name="password"
+                  onChange={handleChange}
                   type="password"
                   required
                   className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
@@ -106,7 +131,8 @@ const Register = () => {
               <div className="mt-1">
                 <input
                   id="password"
-                  name="password"
+                  name="password2"
+                  onChange={handleChange}
                   type="password"
                   required
                   className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
