@@ -1,4 +1,17 @@
+import { useInput } from "../Hooks/useInput";
+interface FormData {
+  email: string;
+  password: string;
+}
+
 function Login() {
+  const { formulario, handleChange } = useInput<FormData>({
+    email: "javi@gmail.com",
+    password: "4jedhfh",
+  });
+
+  const { email, password } = formulario;
+
   return (
     <section>
       <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg">
@@ -17,6 +30,8 @@ function Login() {
               <input
                 id="email"
                 name="email"
+                value={email}
+                onChange={handleChange}
                 type="email"
                 required
                 className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 "
@@ -35,6 +50,8 @@ function Login() {
               <input
                 id="password"
                 name="password"
+                value={password}
+                onChange={handleChange}
                 type="password"
                 required
                 className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 "
