@@ -1,4 +1,6 @@
 import { useInput } from "../Hooks/useInput";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface FormData {
   name: string;
@@ -9,9 +11,11 @@ interface FormData {
 }
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const { formulario, handleChange } = useInput<FormData>({
-    name: "javier",
-    dni: 4,
+    name: "",
+    dni: 0,
     email: "",
     password: "",
     password2: "",
@@ -19,32 +23,54 @@ const Register = () => {
 
   const { name, dni, email, password, password2 } = formulario;
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3001/api/users/register", {
+        name: name,
+        dni: dni,
+        email: email,
+        password: password,
+        password2: password2,
+      })
+      .then((res) => res.data)
+      .then(() => navigate("/login"))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <section className="">
       <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg">
         <div className="w-full">
-          <button className="flex items-center font-roboto text-purple-600">
-            <svg
-              className="mr-2 fill-purple-600"
-              width="14"
-              height="14"
-              viewBox="0 0 17 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8.70509 15.705C9.09445 15.3156 9.09445 14.6844 8.70509 14.295L3.41009 9H16.0001C16.5524 9 17.0001 8.55228 17.0001 8C17.0001 7.44771 16.5524 7 16.0001 7H3.41009L8.70509 1.705C9.09445 1.31564 9.09445 0.684357 8.70509 0.294996C8.31573 -0.0943644 7.68445 -0.0943643 7.29509 0.294997L0.297195 7.29289C-0.0933288 7.68341 -0.0933296 8.31658 0.297195 8.7071L7.29509 15.705C7.68445 16.0944 8.31573 16.0944 8.70509 15.705Z"
-                fill=""
-              />
-            </svg>
-            Atrás
-          </button>
+          <a href="/login">
+            <button className="flex items-center font-roboto text-purple-600">
+              <svg
+                className="mr-2 fill-purple-600"
+                width="14"
+                height="14"
+                viewBox="0 0 17 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.70509 15.705C9.09445 15.3156 9.09445 14.6844 8.70509 14.295L3.41009 9H16.0001C16.5524 9 17.0001 8.55228 17.0001 8C17.0001 7.44771 16.5524 7 16.0001 7H3.41009L8.70509 1.705C9.09445 1.31564 9.09445 0.684357 8.70509 0.294996C8.31573 -0.0943644 7.68445 -0.0943643 7.29509 0.294997L0.297195 7.29289C-0.0933288 7.68341 -0.0933296 8.31658 0.297195 8.7071L7.29509 15.705C7.68445 16.0944 8.31573 16.0944 8.70509 15.705Z"
+                  fill=""
+                />
+              </svg>
+              Atrás
+            </button>
+          </a>
         </div>
 
         <h1 className="font-roboto text-2xl font-bold mt-5 mb-5 text-center">
           Crear cuenta
         </h1>
-        <form action="#" method="POST" className="space-y-6 w-full">
+        <form
+          //action="#"
+          //method="POST"
+          className="space-y-6 w-full"
+          onSubmit={handleSubmit}
+        >
           <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
             <div>
               <label

@@ -6,8 +6,8 @@ interface FormData {
 
 function Login() {
   const { formulario, handleChange } = useInput<FormData>({
-    email: "javi@gmail.com",
-    password: "4jedhfh",
+    email: "",
+    password: "",
   });
 
   const { email, password } = formulario;
@@ -19,7 +19,7 @@ function Login() {
           Iniciar sesión
         </h1>
         <form action="#" method="POST" className="space-y-6 w-full">
-          <div className="">
+          <div>
             <label
               htmlFor="email"
               className="block text-sm text-black font-roboto"
@@ -78,14 +78,18 @@ function Login() {
               Ingresar
             </button>
             <hr className="border-1 border-gray-300 " />
+          </div>
+        </form>
+        <div className="w-full">
+          <a href="/register">
             <button
               type="submit"
               className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-purple-600 transition duration-500 ease-in-out transform bg-purple-200 rounded-xl hover:bg-purple-300  mt-5 "
             >
               ¿No tenés cuenta? Registrate
             </button>
-          </div>
-        </form>
+          </a>
+        </div>
       </div>
     </section>
   );
