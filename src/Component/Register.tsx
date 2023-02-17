@@ -1,7 +1,7 @@
 const Register = () => {
   return (
     <section className="">
-      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto mt-24 rounded-lg text-lg">
+      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg">
         <div className="w-full">
           <button className="flex items-center font-roboto text-purple-600">
             <svg
