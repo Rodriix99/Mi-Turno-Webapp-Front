@@ -179,14 +179,18 @@ const Register = () => {
               Registrarme
             </button>
             <hr className="border-1 border-gray-300 " />
+          </div>
+        </form>
+        <div className="w-full">
+          <a href="/login">
             <button
               type="submit"
               className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-purple-600 transition duration-500 ease-in-out transform bg-purple-200 rounded-xl hover:bg-purple-300  mt-5"
             >
               ¿Ya tenés cuenta? Iniciá sesión
             </button>
-          </div>
-        </form>
+          </a>
+        </div>
       </div>
     </section>
   );
