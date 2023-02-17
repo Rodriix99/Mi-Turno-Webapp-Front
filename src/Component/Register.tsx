@@ -27,7 +27,7 @@ const Register = () => {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-neutral-600"
+                className="block text-sm font-roboto text-neutral-600"
               >
                 Nombre y Apellido
               </label>
@@ -44,7 +44,7 @@ const Register = () => {
             <div className="space-y-1">
               <label
                 htmlFor="dni"
-                className="block text-sm font-medium text-neutral-600"
+                className="block text-sm font-roboto text-neutral-600"
               >
                 DNI
               </label>
@@ -62,7 +62,7 @@ const Register = () => {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-neutral-600"
+              className="block text-sm font-roboto text-neutral-600"
             >
               Email
             </label>
@@ -80,7 +80,7 @@ const Register = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-neutral-600"
+                className="block text-sm font-roboto text-neutral-600"
               >
                 Contraseña
               </label>
@@ -97,7 +97,7 @@ const Register = () => {
             <div className="space-y-1">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-neutral-600"
+                className="block text-sm font-roboto text-neutral-600"
               >
                 Repetir Contraseña:
               </label>
@@ -113,21 +113,21 @@ const Register = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center border black rounded-lg bg-gray-200">
+          <div className="flex items-center font-roboto justify-center border black rounded-lg bg-gray-200">
             La contraseña debe contener:
           </div>
 
           <div>
             <button
               type="submit"
-              className="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-violet-600 rounded-xl hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mb-5 "
+              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-white transition duration-500 ease-in-out transform bg-violet-600 rounded-xl hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mb-5 "
             >
               Registrarme
             </button>
             <hr className="border-1 border-gray-300 " />
             <button
               type="submit"
-              className="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-violet-600 transition duration-500 ease-in-out transform bg-violet-200 rounded-xl hover:bg-violet-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mt-5 "
+              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-violet-600 transition duration-500 ease-in-out transform bg-violet-200 rounded-xl hover:bg-violet-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mt-5 "
             >
               ¿Ya tenés cuenta? Iniciá sesión
             </button>
