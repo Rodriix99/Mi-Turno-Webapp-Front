@@ -1,11 +1,11 @@
 const Register = () => {
   return (
     <section className="">
-      <div className="shadow-xl flex flex-col justify-center items-center w-full max-w-md p-5 mx-auto mt-24 rounded-lg text-lg">
+      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto mt-24 rounded-lg text-lg">
         <div className="w-full">
-          <button className="flex items-center font-roboto text-violet-700">
+          <button className="flex items-center font-roboto text-purple-600">
             <svg
-              className="mr-2 fill-violet-700"
+              className="mr-2 fill-purple-600"
               width="14"
               height="14"
               viewBox="0 0 17 16"
@@ -21,13 +21,15 @@ const Register = () => {
           </button>
         </div>
 
-        <h1 className="font-roboto">Crear cuenta</h1>
+        <h1 className="font-roboto text-2xl font-bold mt-5 mb-5 text-center">
+          Crear cuenta
+        </h1>
         <form action="#" method="POST" className="space-y-6 w-full">
           <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-roboto text-neutral-600"
+                className="block text-sm text-black font-roboto"
               >
                 Nombre y Apellido
               </label>
@@ -37,14 +39,14 @@ const Register = () => {
                   name="name"
                   type="text"
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out  rounded-lg hover:border-gray-400 focus:border-violet-500"
+                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
                 />
               </div>
             </div>
             <div className="space-y-1">
               <label
                 htmlFor="dni"
-                className="block text-sm font-roboto text-neutral-600"
+                className="block text-sm text-black font-roboto"
               >
                 DNI
               </label>
@@ -54,7 +56,7 @@ const Register = () => {
                   name="dni"
                   type="text"
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out  rounded-lg hover:border-gray-400 focus:border-violet-500"
+                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
                 />
               </div>
             </div>
@@ -62,7 +64,7 @@ const Register = () => {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-roboto text-neutral-600"
+              className="block text-sm text-black font-roboto"
             >
               Email
             </label>
@@ -72,7 +74,7 @@ const Register = () => {
                 name="email"
                 type="email"
                 required
-                className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out  rounded-lg hover:border-gray-400 focus:border-violet-500"
+                className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
               />
             </div>
           </div>
@@ -80,7 +82,7 @@ const Register = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-roboto text-neutral-600"
+                className="block text-sm text-black font-roboto"
               >
                 Contraseña
               </label>
@@ -90,14 +92,14 @@ const Register = () => {
                   name="password"
                   type="password"
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out  rounded-lg hover:border-gray-400 focus:border-violet-500"
+                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
                 />
               </div>
             </div>
             <div className="space-y-1">
               <label
                 htmlFor="password"
-                className="block text-sm font-roboto text-neutral-600"
+                className="block text-sm text-black font-roboto"
               >
                 Repetir Contraseña:
               </label>
@@ -107,7 +109,7 @@ const Register = () => {
                   name="password"
                   type="password"
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out  rounded-lg hover:border-gray-400 focus:border-violet-500"
+                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
                 />
               </div>
             </div>
@@ -120,14 +122,14 @@ const Register = () => {
           <div>
             <button
               type="submit"
-              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-white transition duration-500 ease-in-out transform bg-violet-600 rounded-xl hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mb-5 "
+              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-white transition duration-500 ease-in-out transform bg-purple-600 rounded-xl hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mb-5 "
             >
               Registrarme
             </button>
             <hr className="border-1 border-gray-300 " />
             <button
               type="submit"
-              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-violet-600 transition duration-500 ease-in-out transform bg-violet-200 rounded-xl hover:bg-violet-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mt-5 "
+              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-purple-600 transition duration-500 ease-in-out transform bg-purple-200 rounded-xl hover:bg-purple-300  mt-5"
             >
               ¿Ya tenés cuenta? Iniciá sesión
             </button>
