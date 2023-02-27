@@ -1,6 +1,8 @@
+import React, { useEffect, useState } from "react";
 import Steps from "./utils/Steps";
 
-const Booking = () => {
+const BookingPanel = () => {
+  const [branch, setBranch] = useState("");
   return (
     <section>
       <h1 className="font-roboto text-2xl font-bold mt-5 mb-5 text-start">
@@ -17,7 +19,12 @@ const Booking = () => {
             </h2>
           </div>
           <div className="flex w-full border border-black">
-            <Steps />
+            <Steps
+              icon="1"
+              text=""
+              bgColor="bg-violet"
+              textColor="text-violet"
+            />
           </div>
         </div>
         <div className="border border-black w-457 ml-3 p-5">Calendario</div>
@@ -26,4 +33,4 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+export default BookingPanel;
