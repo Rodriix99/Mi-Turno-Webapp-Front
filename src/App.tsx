@@ -20,6 +20,7 @@ function App(): JSX.Element {
         <Route path="/bookingPanel" element={<BookingPanel />} />
         <Route path="/steps" element={<Steps />} />
         <Route path="/newOperator" element={<NewOperator />} />
+
       </Routes>
     </>
   );
