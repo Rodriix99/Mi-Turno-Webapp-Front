@@ -5,6 +5,7 @@ import Counter from "./Component/Counter";
 import Register from "./Component/Register";
 import Home from "./Component/Home";
 import BookingPanel from "./Component/BookingPanel";
+import NewOperator from "./Component/NewOperator";
 import Steps from "./Component/utils/Steps";
 
 function App(): JSX.Element {
@@ -18,6 +19,7 @@ function App(): JSX.Element {
         <Route path="/register" element={<Register />} />
         <Route path="/bookingPanel" element={<BookingPanel />} />
         <Route path="/steps" element={<Steps />} />
+        <Route path="/newOperator" element={<NewOperator />} />
       </Routes>
     </>
   );
