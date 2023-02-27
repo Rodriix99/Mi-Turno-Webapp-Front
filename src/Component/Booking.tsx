@@ -1,4 +1,4 @@
-import BookingSvg from "./utils/BookingSvg";
+import Steps from "./utils/Steps";
 
 const Booking = () => {
   return (
@@ -17,7 +17,7 @@ const Booking = () => {
             </h2>
           </div>
           <div className="flex w-full border border-black">
-            <BookingSvg />
+            <Steps />
           </div>
         </div>
         <div className="border border-black w-457 ml-3 p-5">Calendario</div>
