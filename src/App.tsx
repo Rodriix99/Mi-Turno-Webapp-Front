@@ -15,7 +15,7 @@ function App(): JSX.Element {
         <Route path="/login" element={<Login />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/booking" element={<Booking />} />
+        <Route path="/booking" element={<Booking />} />      
       </Routes>
     </>
   );
