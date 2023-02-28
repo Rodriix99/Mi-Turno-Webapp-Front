@@ -1,6 +1,6 @@
 export const Navbar = () => {
   return (
-    <nav className="py-4 px-24 border-gray-200 rounded white:bg-gray-800 white:border-gray-700">
+    <nav className="shadow-nav py-4 px-24 border-gray-200 rounded white:bg-gray-800 white:border-gray-700">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
         <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-bold py-2 px-4 rounded">
           Reservar
