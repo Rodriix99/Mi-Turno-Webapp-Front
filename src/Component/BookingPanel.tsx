@@ -3,7 +3,7 @@ import Dropdown from "../commons/DropDown";
 import Steps from "./utils/Steps";
 
 const BookingPanel = () => {
-  const [branch, setBranch] = useState("");
+  const [branch, setBranch] = useState({});
   return (
     <section>
       <h1 className="font-roboto text-2xl font-bold mt-5 mb-5 text-start">
@@ -29,7 +29,7 @@ const BookingPanel = () => {
           </div>
           <div className="flex w-full flex-col mt-5">
             <h2>Sucursal</h2>
-            <Dropdown />
+            <Dropdown options={[]} />
           </div>
         </div>
         <div className="border border-black w-457 ml-3 p-5">Calendario</div>
