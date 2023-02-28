@@ -5,7 +5,7 @@ import Counter from "./Component/Counter";
 import Register from "./Component/Register";
 import Home from "./Component/Home";
 import BookingPanel from "./Component/BookingPanel";
-import DropDown from "./commons/DropDown";
+import NewOperator from "./Component/NewOperator";
 
 function App(): JSX.Element {
   return (
@@ -17,7 +17,8 @@ function App(): JSX.Element {
         <Route path="/counter" element={<Counter />} />
         <Route path="/register" element={<Register />} />
         <Route path="/bookingPanel" element={<BookingPanel />} />
-        <Route path="/drop" element={<DropDown />} />
+
+        <Route path="/newOperator" element={<NewOperator />} />
       </Routes>
     </>
   );
