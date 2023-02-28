@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Counter() {
-  const [contador, setContador] = useState(300);
+  const [contador, setContador] = useState(200); // Contador inicia en 5 minutos (300 segundos)
   const [reservaConfirmada, setReservaConfirmada] = useState(false);
 
   useEffect(() => {
@@ -19,21 +19,41 @@ function Counter() {
     return () => clearInterval(intervalo);
   }, [contador, reservaConfirmada]);
 
+  const realizarReserva = () => {
+    axios
+      .post("http://localhost:3001/api/booking/createBooking", {
+        fullName: "",
+        email: "",
+        phone: "",
+        date: "",
+        schedule: "",
+      })
+      .then((response) => {
+        console.log(response.data);
+        setReservaConfirmada(true);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const minutosRestantes = Math.floor(contador / 60);
   const segundosRestantes = contador % 60;
 
   return (
     <div>
-     
+      {!reservaConfirmada ? (
         <div>
           <p>
             Tiempo restante: {minutosRestantes}:
             {segundosRestantes < 10 ? "0" : ""}
-            {segundosRestantes}
+            {segundosRestantes} minutos
           </p>
+          <button onClick={realizarReserva}>Realizar reserva</button>
         </div>
-     
+      ) : (
+        <p>Reserva confirmada</p>
+      )}
     </div>
   );
 }
