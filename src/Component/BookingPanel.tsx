@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Dropdown from "../commons/DropDown";
 import Steps from "./utils/Steps";
 
 const BookingPanel = () => {
@@ -15,16 +16,20 @@ const BookingPanel = () => {
               Reserva
             </h1>
             <h2 className="block text-sm text-black font-roboto">
-              Seleccioná tu sucursal{" "}
+              Seleccioná tu sucursal
             </h2>
           </div>
-          <div className="flex w-full border border-black">
+          <div className="flex w-full border border-black flex-col">
             <Steps
               icon="1"
               text=""
               bgColor="bg-violet"
               textColor="text-violet"
             />
+          </div>
+          <div className="flex w-full flex-col mt-5">
+            <h2>Sucursal</h2>
+            <Dropdown />
           </div>
         </div>
         <div className="border border-black w-457 ml-3 p-5">Calendario</div>
