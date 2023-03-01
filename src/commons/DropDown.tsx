@@ -27,7 +27,7 @@ useEffect(() => {
       <select className="w-full p-2.5 text-gray-500 bg-white border rounded-lg shadow-sm focus:border-indigo-600"
       placeholder="Elegir sucursal">
       {array.length === 0 ? null : 
-      array?.map((branch: any, i) => (<option key={i} value={branch._id}>{branch.name}</option>))}      
+      array?.map((option: any, i) => (<option key={i} value={option._id}>{option.name}</option>))}      
       </select>
     </div>
   );
