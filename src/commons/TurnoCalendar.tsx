@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Calendar, { CalendarProps } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-//calendario
+
 type Props = CalendarProps & {
   onChangeDate: (date: Date) => void;
 };
