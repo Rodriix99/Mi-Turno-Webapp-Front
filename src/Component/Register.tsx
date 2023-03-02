@@ -8,6 +8,7 @@ interface FormData {
   email: string;
   password: string;
   password2: string;
+  usertype: string;
 }
 
 const Register = () => {
@@ -19,9 +20,10 @@ const Register = () => {
     email: "",
     password: "",
     password2: "",
+    usertype: "",
   });
 
-  const { name, dni, email, password, password2 } = formulario;
+  const { name, dni, email, password } = formulario;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,7 +33,7 @@ const Register = () => {
         dni: dni,
         email: email,
         password: password,
-        password2: password2,
+        usertype: "user",
       })
       .then((res) => res.data)
       .then(() => navigate("/login"))

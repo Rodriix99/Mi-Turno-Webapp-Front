@@ -1,6 +1,8 @@
 import { useInput } from "../Hooks/useInput";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/user";
 
 interface FormData {
   email: string;
@@ -8,6 +10,7 @@ interface FormData {
 }
 
 function Login() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { formulario, handleChange } = useInput<FormData>({
     email: "",
@@ -24,6 +27,9 @@ function Login() {
         password: password,
       })
       .then((res) => res.data)
+      .then((res) => {
+        dispatch(setUser(res[0]));
+      })
       .then(() => navigate("/home"))
       .catch((error) => console.log(error));
   };
