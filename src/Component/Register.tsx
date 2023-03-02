@@ -1,6 +1,9 @@
 import { useInput } from "../Hooks/useInput";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
+import ojito from "../assets/icons/openEye.svg";
+import ojitoActivo from "../assets/icons/openEye2.svg";
 
 interface FormData {
   name: string;
@@ -11,6 +14,9 @@ interface FormData {
 }
 
 const Register = () => {
+  const [showPwd, setShowPwd] = useState(false);
+  const [showPwdRepeat, setShowPwdRepeat] = useState(false);
+
   const navigate = useNavigate();
 
   const { formulario, handleChange } = useInput<FormData>({
@@ -36,6 +42,14 @@ const Register = () => {
       .then((res) => res.data)
       .then(() => navigate("/login"))
       .catch((error) => console.log("este es el error", error));
+  };
+
+  const handleShowPwd = () => {
+    setShowPwd(!showPwd);
+  };
+
+  const handleShowPwdRepeat = () => {
+    setShowPwdRepeat(!showPwdRepeat);
   };
 
   return (
@@ -115,7 +129,7 @@ const Register = () => {
               htmlFor="email"
               className="block text-sm text-black font-roboto"
             >
-              Email
+              Mail
             </label>
             <div className="mt-1">
               <input
@@ -129,21 +143,39 @@ const Register = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
-            <div>
+            <div className="space-y-1">
               <label
                 htmlFor="password"
                 className="block text-sm text-black font-roboto"
               >
                 Contraseña
               </label>
-              <div className="mt-1">
+              <div className="relative w-full">
+                <div className="absolute inset-y-0 right-0 flex items-center px-2">
+                  <input
+                    className="hidden js-password-toggle"
+                    id="toggle"
+                    type="checkbox"
+                  />
+                  <label
+                    className=" px-2 py-1 text-gray-600 font-mono cursor-pointer js-password-label"
+                    htmlFor="toggle"
+                    onClick={handleShowPwd}
+                  >
+                    {showPwd ? (
+                      <img src={ojitoActivo} alt="" />
+                    ) : (
+                      <img src={ojito} alt="" />
+                    )}
+                  </label>
+                </div>
                 <input
                   id="password"
                   name="password"
                   onChange={handleChange}
-                  type="password"
+                  type={showPwd ? "text" : "password"}
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                  className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 "
                 />
               </div>
             </div>
@@ -152,16 +184,34 @@ const Register = () => {
                 htmlFor="password"
                 className="block text-sm text-black font-roboto"
               >
-                Repetir Contraseña:
+                Repetir Contraseña
               </label>
-              <div className="mt-1">
+              <div className="relative w-full">
+                <div className="absolute inset-y-0 right-0 flex items-center px-2">
+                  <input
+                    className="hidden js-password-toggle"
+                    id="toggle"
+                    type="checkbox"
+                  />
+                  <label
+                    className=" px-2 py-1 text-gray-600 font-mono cursor-pointer js-password-label"
+                    htmlFor="toggle"
+                    onClick={handleShowPwdRepeat}
+                  >
+                    {showPwdRepeat ? (
+                      <img src={ojitoActivo} alt="" />
+                    ) : (
+                      <img src={ojito} alt="" />
+                    )}
+                  </label>
+                </div>
                 <input
                   id="password"
                   name="password2"
                   onChange={handleChange}
-                  type="password"
+                  type={showPwdRepeat ? "text" : "password"}
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                  className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 "
                 />
               </div>
             </div>
