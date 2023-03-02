@@ -31,9 +31,14 @@ module.exports = {
       width: {
         679: "679px",
         457: "457px",
+        drop: "23rem",
+        cb: "52rem",
+        cbmd: "32rem",
       },
       height: {
         362: "362px",
+        cb: "30rem",
+        cbmd: "40rem",
       },
     },
   },
