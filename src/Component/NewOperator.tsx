@@ -61,6 +61,23 @@ function NewOperator() {
             </div>
             <div className="space-y-1">
               <label
+                htmlFor="branches"
+                className="block text-sm text-black font-roboto"
+              >
+                Sucursal
+              </label>
+              <select
+                required
+                id="branch"
+                className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+              >
+                <option selected></option>
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+              </select>
+              {/* <label
                 htmlFor="branch"
                 className="block text-sm text-black font-roboto"
               >
@@ -74,7 +91,7 @@ function NewOperator() {
                   required
                   className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
