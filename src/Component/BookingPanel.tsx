@@ -5,7 +5,6 @@ import { Button } from "../commons/Button";
 import TurnoCalendar from "../commons/TurnoCalendar";
 
 const BookingPanel = () => {
-  const [branch, setBranch] = useState({});
   const [onChangeDate, setonChangeDate] = useState<Date | null>(null);
   const handleOnChangeDate = (date: Date) => {
     setonChangeDate(date);

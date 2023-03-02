@@ -2,6 +2,8 @@ import { useInput } from "../Hooks/useInput";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/user";
 import ojito from "../assets/icons/openEye.svg";
 import ojitoActivo from "../assets/icons/openEye2.svg";
 
@@ -11,6 +13,7 @@ interface FormData {
 }
 
 function Login() {
+  const dispatch = useDispatch();
   const [showPwd, setShowPwd] = useState(false);
 
   const navigate = useNavigate();
@@ -29,6 +32,9 @@ function Login() {
         password: password,
       })
       .then((res) => res.data)
+      .then((res) => {
+        dispatch(setUser(res[0]));
+      })
       .then(() => navigate("/home"))
       .catch((error) => console.log(error));
   };
