@@ -1,8 +1,8 @@
 function NewOperator() {
   return (
     <section>
-      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg">
-        <h1 className="font-roboto text-xl font-bold mt-5 mb-5 text-start ">
+      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-4xl p-8 mx-auto my-10 rounded-lg text-lg">
+        <h1 className="w-full font-roboto text-xl font-semibold mt-5 mb-5 text-start ">
           Creación de operadores
         </h1>
         <form className="space-y-6 w-full">

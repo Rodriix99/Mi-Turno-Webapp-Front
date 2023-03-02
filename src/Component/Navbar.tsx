@@ -8,7 +8,7 @@ export const Navbar = () => {
   const user = { userType: "admin" };
 
   return (
-    <nav className="shadow-nav py-4 px-24 border-gray-200 rounded white:bg-gray-800 white:border-gray-700">
+    <nav className="shadow-nav lg:py-4 lg:px-24 border-gray-200 rounded white:bg-gray-800 white:border-gray-700 sm: py-3 px-5 ">
       {user.userType !== "admin" ? (
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded">
@@ -77,7 +77,7 @@ export const Navbar = () => {
             <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded">
               Crear sucursal
             </button>
-            <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 ml-3 rounded">
+            <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 ml-3 rounded sm: ml-1.5">
               Sucursal
             </button>
           </div>
