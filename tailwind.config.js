@@ -3,6 +3,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundColor: {},
       fontFamily: {
         roboto: ["Roboto"],
       },
@@ -12,9 +13,14 @@ module.exports = {
       width: {
         679: "679px",
         457: "457px",
+        drop: "23rem",
+        cb: "52rem",
+        cbmd: "32rem",
       },
       height: {
         362: "362px",
+        cb: "30rem",
+        cbmd: "40rem",
       },
     },
   },
