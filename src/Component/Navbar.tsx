@@ -3,17 +3,21 @@ import miCuenta from "../assets/icons/miCuenta.svg";
 import reportes from "../assets/icons/reports.svg";
 import operador from "../assets/icons/operator.svg";
 import sucursal from "../assets/icons/branch.svg";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
-  const user = { userType: "admin" };
-
+  const user = useSelector((state: any) => state.user);
+  console.log(user);
   return (
     <nav className="shadow-nav lg:py-4 lg:px-24 border-gray-200 rounded white:bg-gray-800 white:border-gray-700 sm: py-3 px-5 ">
-      {user.userType !== "admin" ? (
+      {user.usertype !== "admin" ? (
         <div className="container flex flex-wrap items-center justify-between mx-auto">
-          <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded">
-            Reservar
-          </button>
+          <Link to="/bookingPanel">
+            <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded">
+              Reservar
+            </button>
+          </Link>
 
           <button
             data-collapse-toggle="navbar-solid-bg"
@@ -43,30 +47,30 @@ export const Navbar = () => {
           >
             <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent dark:bg-gray-50 md:dark:bg-transparent dark:border-gray-700">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/myBookings"
                   className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
-                  Mis Reservas{" "}
+                  Mis Reservas
                   <img
                     className="pl-1 hover:text-cruceHover"
                     src={misReservas}
                     alt=""
                   />
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/myAccount"
                   className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
-                  Mi Cuenta{" "}
+                  Mi Cuenta
                   <img
                     className="pl-1 hover:text-cruceHover"
                     src={miCuenta}
                     alt=""
                   />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -110,47 +114,47 @@ export const Navbar = () => {
           >
             <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent dark:bg-gray-50 md:dark:bg-transparent dark:border-gray-700">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/branches"
                   className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
-                  Sucursales{" "}
+                  Sucursales
                   <img
                     className="pl-1 hover:text-cruceHover"
                     src={sucursal}
                     alt="Sucursal"
                   />
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/operators"
                   className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
-                  Operadores{" "}
+                  Operadores
                   <img
                     className="pl-1 hover:text-cruceHover"
                     src={operador}
                     alt="Operador"
                   />
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/reports"
                   className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
-                  Reportes{" "}
+                  Reportes
                   <img
                     className="pl-1 hover:text-cruceHover"
                     src={reportes}
                     alt="Reportes"
                   />
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/myAccount"
                   className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                 >
                   Mi Cuenta{" "}
@@ -159,7 +163,7 @@ export const Navbar = () => {
                     src={miCuenta}
                     alt="Mi cuenta"
                   />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

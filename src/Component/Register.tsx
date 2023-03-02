@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import ojito from "../assets/icons/openEye.svg";
 import ojitoActivo from "../assets/icons/openEye2.svg";
+import { Link } from "react-router-dom";
 
 interface FormData {
   name: string;
@@ -58,7 +59,7 @@ const Register = () => {
     <section className="">
       <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg">
         <div className="w-full">
-          <a href="/login">
+          <Link to="/login">
             <button className="flex items-center font-roboto text-purple-600">
               <svg
                 className="mr-2 fill-purple-600"
@@ -75,7 +76,7 @@ const Register = () => {
               </svg>
               Atrás
             </button>
-          </a>
+          </Link>
         </div>
 
         <h1 className="font-roboto text-2xl font-bold mt-5 mb-5 text-center">
@@ -234,14 +235,14 @@ const Register = () => {
           </div>
         </form>
         <div className="w-full">
-          <a href="/login">
+          <Link to="/login">
             <button
               type="submit"
               className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-purple-600 transition duration-500 ease-in-out transform bg-purple-200 rounded-xl hover:bg-purple-300  mt-5"
             >
               ¿Ya tenés cuenta? Iniciá sesión
             </button>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

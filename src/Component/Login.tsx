@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../store/user";
 import ojito from "../assets/icons/openEye.svg";
 import ojitoActivo from "../assets/icons/openEye2.svg";
+import { Link } from "react-router-dom";
 
 interface FormData {
   email: string;
@@ -34,6 +35,7 @@ function Login() {
       .then((res) => res.data)
       .then((res) => {
         dispatch(setUser(res[0]));
+        window.localStorage.setItem("token", res[1]);
       })
       .then(() => navigate("/home"))
       .catch((error) => console.log(error));
@@ -110,12 +112,12 @@ function Login() {
 
           <div className="flex items-center justify-center">
             <div className="text-sm ">
-              <a
-                href="#"
+              <Link
+                to="/forgotPassword"
                 className="font-roboto text-center text-sm text-purple-600 hover:text-purple-500"
               >
                 ¿Olvidaste tu contraseña?
-              </a>
+              </Link>
             </div>
           </div>
 
