@@ -72,10 +72,10 @@ function NewOperator() {
                 className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
               >
                 <option selected></option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
+                <option value="Villa Crespo">Villa Crespo</option>
+                <option value="Palermo">Palermo</option>
+                <option value="Recoleta">Recoleta</option>
+                <option value="Balvanera">Balvanera</option>
               </select>
             </div>
           </div>
