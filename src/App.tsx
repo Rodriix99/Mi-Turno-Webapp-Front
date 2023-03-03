@@ -9,11 +9,12 @@ import BookingPanel from "./Component/BookingPanel";
 import NewOperator from "./Component/NewOperator";
 import { useEffect } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./store/user";
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user);
   const me = async () => {
     const { data } = await axios.post("http://localhost:3001/api/users/me", {
       token: window.localStorage.getItem("token"),
@@ -33,8 +34,9 @@ function App(): JSX.Element {
         <Route path="/login" element={<Login />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/register" element={<Register />} />
-
-        <Route path="/createBranch" element={<CreateBranch />} />
+        {user.usertype === "admin" && (
+          <Route path="/createBranch" element={<CreateBranch />} />
+        )}
         <Route path="/bookingPanel" element={<BookingPanel />} />
         <Route path="/newOperator" element={<NewOperator />} />
       </Routes>

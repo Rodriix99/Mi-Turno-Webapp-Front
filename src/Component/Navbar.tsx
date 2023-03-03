@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const user = useSelector((state: any) => state.user);
-  console.log(user);
   return (
     <nav className="shadow-nav lg:py-4 lg:px-24 border-gray-200 rounded white:bg-gray-800 white:border-gray-700 sm: py-3 px-5 bg-white">
       {user.usertype !== "admin" ? (
@@ -78,9 +77,12 @@ export const Navbar = () => {
       ) : (
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <div>
-            <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded">
-              Crear sucursal
-            </button>
+            <Link to="/createBranch">
+              <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded">
+                Crear sucursal
+              </button>
+            </Link>
+
             <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 ml-3 rounded sm: ml-1.5">
               Sucursal
             </button>
