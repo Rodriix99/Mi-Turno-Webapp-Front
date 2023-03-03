@@ -1,7 +1,7 @@
 function NewOperator() {
   return (
     <section>
-      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-4xl p-8 mx-auto my-10 rounded-lg text-lg">
+      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-4xl p-8 mx-auto my-10 rounded-lg text-lg bg-white">
         <h1 className="w-full font-roboto text-xl font-semibold mt-5 mb-5 text-start ">
           Creación de operadores
         </h1>
@@ -19,7 +19,7 @@ function NewOperator() {
                 name="name"
                 type="text"
                 required
-                className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 "
+                className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
               />
             </div>
           </div>
@@ -37,7 +37,7 @@ function NewOperator() {
                 name="email"
                 type="email"
                 required
-                className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 "
+                className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
               />
             </div>
           </div>
@@ -55,7 +55,7 @@ function NewOperator() {
                   name="dni"
                   type="text"
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
                 />
               </div>
             </div>
@@ -69,7 +69,7 @@ function NewOperator() {
               <select
                 required
                 id="branch"
-                className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
               >
                 <option selected></option>
                 <option value="US">United States</option>
@@ -77,21 +77,6 @@ function NewOperator() {
                 <option value="FR">France</option>
                 <option value="DE">Germany</option>
               </select>
-              {/* <label
-                htmlFor="branch"
-                className="block text-sm text-black font-roboto"
-              >
-                Sucursal
-              </label>
-              <div className="mt-1">
-                <input
-                  id="branch"
-                  name="branch"
-                  type="text"
-                  required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
-                />
-              </div> */}
             </div>
           </div>
           <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
@@ -108,7 +93,7 @@ function NewOperator() {
                   name="password"
                   type="password"
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
                 />
               </div>
             </div>
@@ -125,7 +110,7 @@ function NewOperator() {
                   name="password2"
                   type="password"
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
                 />
               </div>
             </div>
