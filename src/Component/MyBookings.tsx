@@ -7,7 +7,7 @@ function MyBookings() {
         </h1>
         <div className="lg:flex lg:flex-wrap">
           {/* Aca va el .map */}
-          <div className=" p-2 lg:w-full md:w-1/2 md:">
+          <div className=" p-2 lg:w-full md:w-1/2">
             <div className="justify-between w-full flex items-center border-gray-200 border p-6 rounded-lg">
               <div className=" grid grid-cols-1 lg:gap-32 lg:grid-cols-4">
                 <div>
@@ -74,7 +74,7 @@ function MyBookings() {
                     <li>
                       <a
                         href="#"
-                        className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                        className="text-sm font-roboto hover:bg-gray-100 text-gray-700 block px-4 py-2"
                       >
                         Editar
                       </a>
@@ -82,7 +82,7 @@ function MyBookings() {
                     <li>
                       <a
                         href="#"
-                        className="text-sm hover:bg-red-400 text-gray-700 block px-4 py-2"
+                        className="text-sm font-roboto hover:bg-red-400 text-gray-700 block px-4 py-2"
                       >
                         Cancelar
                       </a>
@@ -93,7 +93,7 @@ function MyBookings() {
             </div>
           </div>
           {/* Este se elimina, es solo de prueba */}
-          <div className=" p-2 lg:w-full md:w-1/2 md:">
+          <div className=" p-2 lg:w-full md:w-1/2">
             <div className="justify-between w-full flex items-center border-gray-200 border p-6 rounded-lg">
               <div className=" grid grid-cols-1 lg:gap-32 lg:grid-cols-4">
                 <div>
@@ -160,7 +160,7 @@ function MyBookings() {
                     <li>
                       <a
                         href="#"
-                        className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                        className="text-sm font-roboto hover:bg-gray-100 text-gray-700 block px-4 py-2"
                       >
                         Editar
                       </a>
@@ -168,7 +168,7 @@ function MyBookings() {
                     <li>
                       <a
                         href="#"
-                        className="text-sm hover:bg-red-400 text-gray-700 block px-4 py-2"
+                        className="text-sm font-roboto hover:bg-red-400 text-gray-700 block px-4 py-2"
                       >
                         Cancelar
                       </a>
