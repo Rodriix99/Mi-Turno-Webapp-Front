@@ -45,7 +45,7 @@ export const Navbar = () => {
             id="navbar-solid-bg"
           >
             <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent dark:bg-gray-50 md:dark:bg-transparent dark:border-gray-700">
-              <li className="bg-white">
+              <li className="bg-white sm:py-2">
                 <Link
                   to="/myBookings"
                   className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
@@ -58,7 +58,7 @@ export const Navbar = () => {
                   />
                 </Link>
               </li>
-              <li className="bg-white">
+              <li className="bg-white sm:py-2">
                 <Link
                   to="/myAccount"
                   className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
