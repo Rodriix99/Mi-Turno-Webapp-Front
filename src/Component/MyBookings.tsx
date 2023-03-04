@@ -45,7 +45,7 @@ function MyBookings() {
               </div>
               <div>
                 <button
-                  className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded px-4 py-2.5 text-center inline-flex items-center"
+                  className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto rounded p-3 pl-4 text-center inline-flex items-center"
                   type="button"
                   data-dropdown-toggle="dropdown"
                 >
@@ -131,7 +131,7 @@ function MyBookings() {
               </div>
               <div>
                 <button
-                  className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded px-4 py-2.5 text-center inline-flex items-center"
+                  className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto rounded p-3 pl-4 text-center inline-flex items-center"
                   type="button"
                   data-dropdown-toggle="dropdown"
                 >
