@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./store/user";
-
+import Branches from "./Component/Branches";
 function App(): JSX.Element {
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.user);
@@ -35,7 +35,10 @@ function App(): JSX.Element {
         <Route path="/counter" element={<Counter />} />
         <Route path="/register" element={<Register />} />
         {user.usertype === "admin" && (
-          <Route path="/createBranch" element={<CreateBranch />} />
+          <>
+            <Route path="/createBranch" element={<CreateBranch />} />
+            <Route path="/branches" element={<Branches />} />
+          </>
         )}
         <Route path="/bookingPanel" element={<BookingPanel />} />
         <Route path="/newOperator" element={<NewOperator />} />
