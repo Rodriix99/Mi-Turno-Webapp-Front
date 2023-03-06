@@ -11,6 +11,8 @@ import Home from "./Component/Home";
 import CreateBranch from "./Component/CreateBranch";
 import BookingPanel from "./Component/BookingPanel";
 import NewOperator from "./Component/NewOperator";
+
+import Branches from "./Component/Branches";
 import MyBookings from "./Component/MyBookings";
 import Operators from "./Component/Operators";
 
@@ -41,7 +43,10 @@ function App(): JSX.Element {
         <Route path="/operators" element={<Operators />} />
 
         {user.usertype === "admin" && (
-          <Route path="/createBranch" element={<CreateBranch />} />
+          <>
+            <Route path="/createBranch" element={<CreateBranch />} />
+            <Route path="/branches" element={<Branches />} />
+          </>
         )}
         {user.usertype === "admin" && (
           <Route path="/newOperator" element={<NewOperator />} />

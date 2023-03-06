@@ -35,7 +35,7 @@ function CreateBranch(): JSX.Element {
       console.log(err);
     }
   };
-  console.log(inputs);
+  //console.log(inputs);
   return (
     <div
       style={{ width: "100%", height: "100vh" }}
