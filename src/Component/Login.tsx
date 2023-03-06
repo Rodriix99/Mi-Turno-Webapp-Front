@@ -77,7 +77,7 @@ function Login() {
               htmlFor="password"
               className="block text-sm text-black font-roboto"
             >
-              Password
+              Contraseña
             </label>
             <div className="relative w-full">
               <div className="absolute inset-y-0 right-0 flex items-center px-2">

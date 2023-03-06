@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./Component/Navbar";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "./store/user";
+import axios from "axios";
 import Login from "./Component/Login";
 import Counter from "./Component/Counter";
 import Register from "./Component/Register";
@@ -7,11 +11,11 @@ import Home from "./Component/Home";
 import CreateBranch from "./Component/CreateBranch";
 import BookingPanel from "./Component/BookingPanel";
 import NewOperator from "./Component/NewOperator";
-import { useEffect } from "react";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "./store/user";
+
 import Branches from "./Component/Branches";
+import MyBookings from "./Component/MyBookings";
+import Operators from "./Component/Operators";
+
 function App(): JSX.Element {
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.user);
@@ -34,14 +38,19 @@ function App(): JSX.Element {
         <Route path="/login" element={<Login />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/myBookings" element={<MyBookings />} />
+        <Route path="/bookingPanel" element={<BookingPanel />} />
+        <Route path="/operators" element={<Operators />} />
+
         {user.usertype === "admin" && (
           <>
             <Route path="/createBranch" element={<CreateBranch />} />
             <Route path="/branches" element={<Branches />} />
           </>
         )}
-        <Route path="/bookingPanel" element={<BookingPanel />} />
-        <Route path="/newOperator" element={<NewOperator />} />
+        {user.usertype === "admin" && (
+          <Route path="/newOperator" element={<NewOperator />} />
+        )}
       </Routes>
     </div>
   );
