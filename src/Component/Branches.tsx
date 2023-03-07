@@ -36,12 +36,12 @@ function Branches() {
   //console.log(query);
   return (
     <div className="bg-white flex justify-center">
-      <div className="w-[70rem] h-[30rem] flex items-center flex-col">
+      <div className="h-[30rem] flex items-center flex-col">
         <div className="w-[100%] text-left ml-[2rem] mt-[2rem]">
           <h1 className="font-roboto font-bold justify-start">Sucursales</h1>
         </div>
         <InfiniteScroll
-          className="w-[65rem] max-[1024px]:w-[50rem]  max-[768px]:w-[35rem] max-[560px]:w-[22rem] mb-5"
+          className="w-[65rem] max-[1024px]:w-[50rem]  max-[768px]:w-[35rem] max-[560px]:w-[20rem] mb-5"
           loader=""
           hasMore={hasMore}
           dataLength={branches.length}
