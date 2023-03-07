@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./Component/Navbar";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "./store/user";
+import axios from "axios";
 import Login from "./Component/Login";
 import Counter from "./Component/Counter";
 import Register from "./Component/Register";
@@ -8,13 +12,15 @@ import CreateBranch from "./Component/CreateBranch";
 import BookingPanel from "./Component/BookingPanel";
 import NewOperator from "./Component/NewOperator";
 import MyAccount from "./Component/MyAccount";
-import { useEffect } from "react";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { setUser } from "./store/user";
+
+
+import Branches from "./Component/Branches";
+import MyBookings from "./Component/MyBookings";
+import Operators from "./Component/Operators";
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user);
   const me = async () => {
     const { data } = await axios.post("http://localhost:3001/api/users/me", {
       token: window.localStorage.getItem("token"),
@@ -36,8 +42,19 @@ function App(): JSX.Element {
         <Route path="/register" element={<Register />} />
         <Route path="/myAccount" element={<MyAccount/>} />
         <Route path="/createBranch" element={<CreateBranch />} />
+        <Route path="/myBookings" element={<MyBookings />} />
         <Route path="/bookingPanel" element={<BookingPanel />} />
-        <Route path="/newOperator" element={<NewOperator />} />
+        <Route path="/operators" element={<Operators />} />
+
+        {user.usertype === "admin" && (
+          <>
+            <Route path="/createBranch" element={<CreateBranch />} />
+            <Route path="/branches" element={<Branches />} />
+          </>
+        )}
+        {user.usertype === "admin" && (
+          <Route path="/newOperator" element={<NewOperator />} />
+        )}
       </Routes>
     </div>
   );

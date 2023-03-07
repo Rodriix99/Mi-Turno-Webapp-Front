@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const user = useSelector((state: any) => state.user);
- // console.log(user);
+  console.log(user.userType);
   return (
-    <nav className="shadow-nav lg:py-4 lg:px-24 border-gray-200 rounded white:bg-gray-800 white:border-gray-700 sm: py-3 px-5 ">
+    <nav className="shadow-nav lg:py-4 lg:px-24 border-gray-200 rounded white:bg-gray-800 white:border-gray-700 sm: py-3 px-5 bg-white">
       {user.usertype !== "admin" ? (
         <div className="container flex flex-wrap items-center justify-between mx-auto">
-          <Link to="/bookingPanel">
+          <Link to={!user.id ? "/login" : "/bookingPanel"}>
             <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded">
               Reservar
             </button>
@@ -22,7 +22,7 @@ export const Navbar = () => {
           <button
             data-collapse-toggle="navbar-solid-bg"
             type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
             aria-controls="navbar-solid-bg"
             aria-expanded="false"
           >
@@ -45,11 +45,11 @@ export const Navbar = () => {
             className="hidden w-full md:block md:w-auto"
             id="navbar-solid-bg"
           >
-            <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent dark:bg-gray-50 md:dark:bg-transparent dark:border-gray-700">
-              <li>
+            <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent">
+              <li className="bg-white sm:py-2">
                 <Link
                   to="/myBookings"
-                  className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="flex items-center text-black rounded font-semibold font-roboto md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0"
                 >
                   Mis Reservas
                   <img
@@ -59,10 +59,10 @@ export const Navbar = () => {
                   />
                 </Link>
               </li>
-              <li>
+              <li className="bg-white sm:py-2">
                 <Link
                   to="/myAccount"
-                  className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="flex items-center text-black rounded font-semibold font-roboto md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0"
                 >
                   Mi Cuenta
                   <img
@@ -78,9 +78,12 @@ export const Navbar = () => {
       ) : (
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <div>
-            <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded">
-              Crear sucursal
-            </button>
+            <Link to="/createBranch">
+              <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 rounded">
+                Crear sucursal
+              </button>
+            </Link>
+
             <button className="bg-violetSecondary hover:bg-violetSecondaryHover text-violet font-semibold font-roboto py-2 px-4 ml-3 rounded sm: ml-1.5">
               Sucursal
             </button>
@@ -89,7 +92,7 @@ export const Navbar = () => {
           <button
             data-collapse-toggle="navbar-solid-bg"
             type="button"
-            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
             aria-controls="navbar-solid-bg"
             aria-expanded="false"
           >
@@ -112,11 +115,11 @@ export const Navbar = () => {
             className="hidden w-full md:block md:w-auto"
             id="navbar-solid-bg"
           >
-            <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent dark:bg-gray-50 md:dark:bg-transparent dark:border-gray-700">
-              <li>
+            <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent">
+              <li className="bg-white">
                 <Link
                   to="/branches"
-                  className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="flex items-center text-black rounded font-semibold font-roboto md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0"
                 >
                   Sucursales
                   <img
@@ -126,10 +129,10 @@ export const Navbar = () => {
                   />
                 </Link>
               </li>
-              <li>
+              <li className="bg-white">
                 <Link
                   to="/operators"
-                  className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="flex items-center text-black rounded font-semibold font-roboto md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0"
                 >
                   Operadores
                   <img
@@ -139,10 +142,10 @@ export const Navbar = () => {
                   />
                 </Link>
               </li>
-              <li>
+              <li className="bg-white">
                 <Link
                   to="/reports"
-                  className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="flex items-center text-black rounded font-semibold font-roboto md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0"
                 >
                   Reportes
                   <img
@@ -152,12 +155,12 @@ export const Navbar = () => {
                   />
                 </Link>
               </li>
-              <li>
+              <li className="bg-white">
                 <Link
                   to="/myAccount"
-                  className="flex items-center text-black rounded font-semibold font-roboto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0 dark:text-zinc-900 md:dark:hover:text-purple-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="flex items-center text-black rounded font-semibold font-roboto md:hover:bg-transparent md:border-0 md:hover:text-violet md:p-0"
                 >
-                  Mi Cuenta{" "}
+                  Mi Cuenta
                   <img
                     className="pl-1 hover:text-cruceHover"
                     src={miCuenta}

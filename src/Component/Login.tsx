@@ -46,8 +46,8 @@ function Login() {
   };
 
   return (
-    <section>
-      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg">
+    <section className="h-screen">
+      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg bg-white">
         <h1 className="font-roboto text-2xl font-bold mt-5 mb-5 text-center ">
           Iniciar sesión
         </h1>
@@ -67,7 +67,7 @@ function Login() {
                 onChange={handleChange}
                 type="email"
                 required
-                className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 "
+                className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
               />
             </div>
           </div>
@@ -77,7 +77,7 @@ function Login() {
               htmlFor="password"
               className="block text-sm text-black font-roboto"
             >
-              Password
+              Contraseña
             </label>
             <div className="relative w-full">
               <div className="absolute inset-y-0 right-0 flex items-center px-2">
@@ -105,7 +105,7 @@ function Login() {
                 onChange={handleChange}
                 type={showPwd ? "text" : "password"}
                 required
-                className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 "
+                className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
               />
             </div>
           </div>
