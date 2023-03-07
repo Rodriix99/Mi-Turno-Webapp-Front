@@ -20,14 +20,14 @@ const BookingPanel = () => {
       <div className=" flex justify-center ">
         <div className="flex flex-col rounded-lg w-679 h-362 mr-8 py-8 px-10 bg-white">
           <div className="flex justify-start flex-col mt-2 ">
-            <h1 className="font-roboto text-2xl font-bold  mb-1 text-start ">
+            <h1 className="font-roboto text-2xl font-bold mb-1 text-start ">
               Reserva
             </h1>
             <h2 className="block text-sm text-black font-roboto">
               Seleccioná tu sucursal
             </h2>
           </div>
-          <div className="flex w-full  mt-6">
+          <div className="flex w-full mt-6">
             <Steps
               icon="1"
               text="Elegí tu sucursal"

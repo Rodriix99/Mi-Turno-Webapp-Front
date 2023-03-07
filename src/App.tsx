@@ -7,6 +7,7 @@ import Home from "./Component/Home";
 import CreateBranch from "./Component/CreateBranch";
 import BookingPanel from "./Component/BookingPanel";
 import NewOperator from "./Component/NewOperator";
+import MyAccount from "./Component/MyAccount";
 import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -33,7 +34,7 @@ function App(): JSX.Element {
         <Route path="/login" element={<Login />} />
         <Route path="/counter" element={<Counter />} />
         <Route path="/register" element={<Register />} />
-
+        <Route path="/myAccount" element={<MyAccount/>} />
         <Route path="/createBranch" element={<CreateBranch />} />
         <Route path="/bookingPanel" element={<BookingPanel />} />
         <Route path="/newOperator" element={<NewOperator />} />
