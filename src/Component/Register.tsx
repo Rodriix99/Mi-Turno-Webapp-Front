@@ -86,7 +86,7 @@ const Register = () => {
     e.preventDefault();
     axios
       .post("http://localhost:3001/api/users/register", {
-        name: name,
+        fullName: name,
         dni: dni,
         email: email,
         password: password,

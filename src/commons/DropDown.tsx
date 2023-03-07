@@ -35,10 +35,11 @@ const Dropdown = (props: DropDownProps) => {
   return (
     <div className="relative w-full">
       <select
+      required
         className="w-full p-2.5 text-gray-500 bg-white border rounded-lg shadow-sm focus:border-indigo-600"
-        placeholder="Elegir sucursal"
         onClick={handleSelect}
       >
+        <option selected>Elegir sucursal</option>
         {array.length === 0
           ? null
           : array?.map((option: any, i) => (
