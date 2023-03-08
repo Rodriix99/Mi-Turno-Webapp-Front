@@ -367,7 +367,7 @@ const Register = () => {
           <div>
             <button
               type="submit"
-              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-white transition duration-500 ease-in-out transform bg-purple-600 rounded-xl hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mb-5 "
+              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-white transition duration-500 ease-in-out transform bg-purple-600 rounded-xl hover:bg-purple-500 focus:ring-0 mb-5 "
             >
               Registrarme
             </button>
@@ -378,7 +378,7 @@ const Register = () => {
           <Link to="/login">
             <button
               type="submit"
-              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-purple-600 transition duration-500 ease-in-out transform bg-purple-200 rounded-xl hover:bg-purple-300  mt-5"
+              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-purple-600 transition duration-500 ease-in-out transform bg-purple-200 rounded-xl hover:bg-purple-300 focus:ring-0 mt-5"
             >
               ¿Ya tenés cuenta? Iniciá sesión
             </button>
