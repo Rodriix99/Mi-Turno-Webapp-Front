@@ -2,7 +2,7 @@ export interface UserState {
   id: number;
   fullName: string;
   email: string;
-  dni: string;
+  dni: number;
   phone: string;
 }
 
@@ -10,7 +10,7 @@ const initialState: UserState = {
   id: 0,
   fullName: "",
   email: "",
-  dni: "",
+  dni: 0,
   phone: "",
 };
 
