@@ -1,7 +1,7 @@
-import ModalCheck from "../commons/ModalCheck";
+import ModalUpdated from "../commons/ModalUpdated";
 
 const Home = () => {
-  return <ModalCheck />;
+  return <ModalUpdated />;
 };
 
 export default Home;
