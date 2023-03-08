@@ -1,32 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../store/updateUser";
 import { UserState } from "../store/updateUser";
 
+type buttonEvent = React.MouseEvent<HTMLButtonElement>
+
 const MyAccount = () => {
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.user);
-  console.log(user);
-
+  
   const [fullName, setfullName] = useState("");
   const [email, setEmail] = useState("");
   const [dni, setDni] = useState("");
-  const [phone, setPhone] = useState("");
-  console.log(phone);
-  
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [editingEnabled, setEditingEnabled] = useState(false);
+  const [phone, setPhone] = useState("");  
 
-  const handleEdit = () => {
-    setIsDisabled(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+ 
+  useEffect(() => {
+    setfullName(user.fullName);
+    setEmail(user.email);
+    setDni(user.dni);
+    setPhone(user.phone);
+    
+  }, [user])
+  
+  console.log({fullName, email, dni, phone});
+
+  const handleEdit = (e: buttonEvent) => {
+    e.preventDefault();
+
+    setIsDisabled(!isDisabled);
   };
+  console.log(isDisabled);
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      if (editingEnabled) {
+      if (!isDisabled) {
         const { data } = await axios.put(
           `http://localhost:3001/api/users/updateUser`,
           {
@@ -45,9 +58,7 @@ const MyAccount = () => {
            phone: data.phone };
         dispatch(updateUser(options));
       }
-
-
-      setEditingEnabled(false);
+      setIsDisabled(true);
     } catch (error) {
       console.error(error);
     }
@@ -72,7 +83,7 @@ const MyAccount = () => {
                 id="name"
                 name="name"
                 type="text"
-                defaultValue={user.fullName}
+                defaultValue={fullName}
                 onChange={(e) => setfullName(e.target.value)}
                 required
                 className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 "
@@ -93,7 +104,7 @@ const MyAccount = () => {
                 id="email"
                 name="email"
                 type="email"
-                defaultValue={user.email}
+                defaultValue={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 "
@@ -113,8 +124,8 @@ const MyAccount = () => {
                 <input
                   id="dni"
                   name="dni"
-                  type="text"
-                  defaultValue={user.dni}
+                  type="number"
+                  defaultValue={dni}
                   onChange={(e) => setDni(e.target.value)}
                   required
                   className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
@@ -134,7 +145,7 @@ const MyAccount = () => {
                   id="phone"
                   name="phone"
                   type="text"
-                  defaultValue={user.phone}
+                  defaultValue={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   required
                   className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
@@ -146,11 +157,9 @@ const MyAccount = () => {
 
           <div>
             <button
-              type="submit"
-              onClick={() => {
-                setEditingEnabled(true);
-                handleEdit();
-              }}
+              onClick={
+                handleEdit
+              }
               className="text-purple-600"
             >
               Editar datos
@@ -160,10 +169,7 @@ const MyAccount = () => {
             <button
               type="submit"
               className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-white transition duration-500 ease-in-out transform bg-purple-600 rounded-xl hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mb-5 "
-              disabled={!editingEnabled}
-              onClick={() => {
-                setIsDisabled(true);
-              }}
+              disabled={isDisabled}
             >
               Aceptar
             </button>
