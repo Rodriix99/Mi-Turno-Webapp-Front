@@ -1,5 +1,7 @@
+import ModalCheck from "../commons/ModalCheck";
+
 const Home = () => {
-  return <h1>Hola mundo</h1>;
+  return <ModalCheck />;
 };
 
 export default Home;
