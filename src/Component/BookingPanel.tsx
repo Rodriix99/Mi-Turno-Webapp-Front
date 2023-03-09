@@ -50,8 +50,7 @@ const BookingPanel = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}
-      
+      <form onSubmit={handleSubmit}      
       >
         <section className="bg-grey1 h-screen w-full px-5 lg:px-10">
           <div className="w-full flex justify-start">
