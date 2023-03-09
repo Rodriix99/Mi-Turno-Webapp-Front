@@ -157,9 +157,7 @@ const MyAccount = () => {
 
           <div>
             <button
-              onClick={
-                handleEdit
-              }
+              onClick={handleEdit}
               className="text-purple-600"
             >
               Editar datos

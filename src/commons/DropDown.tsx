@@ -6,17 +6,19 @@ import { setBookingData } from "../store/bookingData";
 
 interface DropDownProps {
   options: string[];
+  onSelectedBranch: (branch: any) => void;
 }
 
 type ClickEvent = React.MouseEvent<HTMLSelectElement>;
 
 const Dropdown = (props: DropDownProps) => {
   const [array, setArray] = useState([]);
+  const [selectedBranch, setSelectedBranch] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/branches/branches")
+      .get("http://localhost:3001/api/branches/allbranches")
       .then((res) => res.data)
       .then((branch) => setArray(branch))
 
@@ -27,9 +29,9 @@ const Dropdown = (props: DropDownProps) => {
 
   const handleSelect = (e: ClickEvent) => {
     const target = e.target as HTMLSelectElement;
-
-    console.log(target.value);
-    // dispatch(setBookingData({field:"branch",data:target.value}))
+    setSelectedBranch(target.value);
+    props.onSelectedBranch(target.value);
+   //dispatch(setBookingData({field:"branch", data:target.value}))
   };
 
   return (

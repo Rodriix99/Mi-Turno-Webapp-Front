@@ -19,7 +19,7 @@ function Counter() {
     return () => clearInterval(intervalo);
   }, [contador, reservaConfirmada]);
 
-  const realizarReserva = () => {
+  /* const realizarReserva = () => {
     axios
       .post("http://localhost:3001/api/booking/createBooking", {
         fullName: "",
@@ -35,7 +35,7 @@ function Counter() {
       .catch((error) => {
         console.error(error);
       });
-  };
+  }; */
 
   const minutosRestantes = Math.floor(contador / 60);
   const segundosRestantes = contador % 60;
@@ -49,7 +49,7 @@ function Counter() {
             {segundosRestantes < 10 ? "0" : ""}
             {segundosRestantes} minutos
           </p>
-          <button onClick={realizarReserva}>Realizar reserva</button>
+     
         </div>
       ) : (
         <p>Reserva confirmada</p>
