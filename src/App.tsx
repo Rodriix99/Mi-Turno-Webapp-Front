@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "./store/user";
 import axios from "axios";
 import Login from "./Component/Login";
-import Counter from "./Component/Counter";
+import Counter from "./commons/Counter";
 import Register from "./Component/Register";
 import Home from "./Component/Home";
 import CreateBranch from "./Component/CreateBranch";
