@@ -1,5 +1,7 @@
+import ModalUpdated from "../commons/ModalUpdated";
+
 const Home = () => {
-  return <div></div>;
+  return <ModalUpdated />;
 };
 
 export default Home;

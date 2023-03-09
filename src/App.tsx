@@ -13,7 +13,6 @@ import BookingPanel from "./Component/BookingPanel";
 import NewOperator from "./Component/NewOperator";
 import MyAccount from "./Component/MyAccount";
 
-
 import Branches from "./Component/Branches";
 import MyBookings from "./Component/MyBookings";
 import Operators from "./Component/Operators";
@@ -38,13 +37,13 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/counter" element={<Counter />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/myAccount" element={<MyAccount/>} />
+        <Route path="/myAccount" element={<MyAccount />} />
         <Route path="/createBranch" element={<CreateBranch />} />
         <Route path="/myBookings" element={<MyBookings />} />
         <Route path="/bookingPanel" element={<BookingPanel />} />
         <Route path="/operators" element={<Operators />} />
+        <Route path="/newOperator" element={<NewOperator />} />
 
         {user.usertype === "admin" && (
           <>
@@ -52,9 +51,9 @@ function App(): JSX.Element {
             <Route path="/branches" element={<Branches />} />
           </>
         )}
-        {user.usertype === "admin" && (
+        {/* {user.usertype === "admin" && (
           <Route path="/newOperator" element={<NewOperator />} />
-        )}
+        )} */}
       </Routes>
     </div>
   );

@@ -49,20 +49,23 @@ const BookingPanel = () => {
   };
 
   return (
+
     <>
       <form onSubmit={handleSubmit}>
-        <section className="bg-grey1 h-screen">
-          <div className="flex flex-col ml-[10rem]">
-            <h1 className="font-roboto text-2xl font-bold mt-5 mb-5 text-start">
-              Hacer una reserva
+       <section className="bg-grey1 h-screen w-full px-5 lg:px-10">
+      <div className="w-full flex justify-start">
+        <h1 className="w-full font-roboto text-xl text-start font-semibold mt-9 mb-5 lg:ml-40 ">
+          Hacer una reserva
+        </h1>
+      </div>
+      <div className=" lg:flex lg:justify-center w-full sm:flex sm:flex-wrap">
+        <div className="flex flex-col rounded-lg lg:w-679 lg:h-362 lg:mr-8 lg:py-8 lg:px-10 lg:mb-0 mb-2 p-5 bg-white ">
+          <div className="flex justify-start flex-col mt-2 ">
+            <h1 className="font-roboto text-lg font-semibold mb-1 text-start ">
+              Reserva
             </h1>
           </div>
-          <div className=" flex justify-center ">
-            <div className="flex flex-col rounded-lg w-679 h-362 mr-8 py-8 px-10 bg-white">
-              <div className="flex justify-start flex-col mt-2 ">
-                <h1 className="font-roboto text-2xl font-bold mb-1 text-start ">
-                  Reserva
-                </h1>
+    
                 {!selectedBranch && (
                   <h2 className="block text-sm text-black font-roboto">
                     Seleccioná tu sucursal
@@ -79,7 +82,7 @@ const BookingPanel = () => {
                   </h2>
                 )}
               </div>
-              <div className="flex w-full mt-6">
+              <div className="flex w-full mt-6 font-roboto text-sm font-normal">
                 {currentStep > 1 ? (
                   <Steps icon="check" text="Elegí tu sucursal" />
                 ) : (
@@ -113,8 +116,8 @@ const BookingPanel = () => {
                   />
                 )}
               </div>
-              <div className="flex w-full flex-col mt-5 font-roboto">
-                <h2>Sucursal</h2>
+              <div className="flex w-full flex-col mt-5 font-roboto text-sm">
+                <h2 className="mb-2">Sucursal</h2>
                 <Dropdown
                   options={[]}
                   onSelectedBranch={handleOnChangeBranch}
@@ -127,9 +130,10 @@ const BookingPanel = () => {
                 <Button />
               </div>
             </div>
-            <div className="m w-457 ml-3 p-5 rounded-lg bg-white">
-              <div className="flex flex-col items-center  border border-black">
-                <TurnoCalendar onChangeDate={handleOnChangeDate} />
+            <div className="lg:w-457 lg:ml-3 p-5 rounded-lg bg-white">
+              <div className="flex flex-col items-center">
+                <TurnoCalendar onChangeDate={handleOnChangeDate}
+                 className="border-none"/>
                 {selectedDate && (
                   <p>Fecha seleccionada: {selectedDate.toLocaleDateString()}</p>
                 )}
