@@ -43,6 +43,7 @@ function App(): JSX.Element {
         <Route path="/myBookings" element={<MyBookings />} />
         <Route path="/bookingPanel" element={<BookingPanel />} />
         <Route path="/operators" element={<Operators />} />
+        <Route path="/newOperator" element={<NewOperator />} />
 
         {user.usertype === "admin" && (
           <>
@@ -50,9 +51,9 @@ function App(): JSX.Element {
             <Route path="/branches" element={<Branches />} />
           </>
         )}
-        {user.usertype === "admin" && (
+        {/* {user.usertype === "admin" && (
           <Route path="/newOperator" element={<NewOperator />} />
-        )}
+        )} */}
       </Routes>
     </div>
   );
