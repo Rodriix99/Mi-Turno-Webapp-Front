@@ -1,7 +1,7 @@
-import ModalUpdated from "../commons/ModalUpdated";
+import UnsuccessLogin from "../commons/UnsuccessLogin";
 
 const Home = () => {
-  return <ModalUpdated />;
+  return <UnsuccessLogin />;
 };
 
 export default Home;
