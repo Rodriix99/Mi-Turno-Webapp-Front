@@ -1,6 +1,13 @@
 import { useInput } from "../Hooks/useInput";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import ojito from "../assets/icons/openEye.svg";
+import ojitoActivo from "../assets/icons/openEye2.svg";
+import check from "../assets/icons/rightCheckbox.svg";
+import wrong from "../assets/icons/wrongCheckbox.svg";
+
+import { Link } from "react-router-dom";
 
 interface FormData {
   name: string;
@@ -8,9 +15,17 @@ interface FormData {
   email: string;
   password: string;
   password2: string;
+  usertype: string;
 }
 
 const Register = () => {
+  const [showPwd, setShowPwd] = useState(false);
+  const [showPwdRepeat, setShowPwdRepeat] = useState(false);
+  const [upperCase, setUpperCase] = useState(0);
+  const [lowerCase, setLowerCase] = useState(0);
+  const [number, setNumber] = useState(0);
+  const [length, setLength] = useState(0);
+
   const navigate = useNavigate();
 
   const { formulario, handleChange } = useInput<FormData>({
@@ -19,30 +34,84 @@ const Register = () => {
     email: "",
     password: "",
     password2: "",
+    usertype: "",
   });
 
-  const { name, dni, email, password, password2 } = formulario;
+  const { name, dni, email, password } = formulario;
+
+  useEffect(() => {
+    const hasUppercase = (value: string) => {
+      return /[A-Z]/.exec(value);
+    };
+    const hasLowercase = (value: string) => {
+      return /[a-z]/.exec(value);
+    };
+    const hasNumber = (value: string) => {
+      return /\d/.exec(value);
+    };
+    const enoughLength = (value: string) => {
+      return value.length >= 8;
+    };
+    if (password.length === 0) {
+      setUpperCase(0);
+      setLowerCase(0);
+      setNumber(0);
+      setLength(0);
+    }
+    if (password.length > 0) {
+      if (hasUppercase(password)) {
+        setUpperCase(2);
+      } else {
+        setUpperCase(1);
+      }
+      if (hasLowercase(password)) {
+        setLowerCase(2);
+      } else {
+        setLowerCase(1);
+      }
+      if (hasNumber(password)) {
+        setNumber(2);
+      } else {
+        setNumber(1);
+      }
+      if (enoughLength(password)) {
+        setLength(2);
+      } else {
+        setLength(1);
+      }
+    }
+  }, [password]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     axios
       .post("http://localhost:3001/api/users/register", {
-        name: name,
+        fullName: name,
         dni: dni,
         email: email,
         password: password,
-        password2: password2,
+        usertype: "user",
       })
       .then((res) => res.data)
       .then(() => navigate("/login"))
       .catch((error) => console.log("este es el error", error));
   };
 
+  const handleShowPwd = () => {
+    setShowPwd(!showPwd);
+  };
+
+  const handleShowPwdRepeat = () => {
+    setShowPwdRepeat(!showPwdRepeat);
+  };
+
+  // console.log(haveUp);
+
   return (
-    <section className="">
-      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg">
+    <section className="h-screen">
+      <div className="shadow-rl flex flex-col justify-center items-center w-full max-w-2xl p-8 mx-auto my-10 rounded-lg text-lg bg-white">
         <div className="w-full">
-          <a href="/login">
+          <Link to="/login">
             <button className="flex items-center font-roboto text-purple-600">
               <svg
                 className="mr-2 fill-purple-600"
@@ -59,18 +128,13 @@ const Register = () => {
               </svg>
               Atrás
             </button>
-          </a>
+          </Link>
         </div>
 
         <h1 className="font-roboto text-2xl font-bold mt-5 mb-5 text-center">
           Crear cuenta
         </h1>
-        <form
-          //action="#"
-          //method="POST"
-          className="space-y-6 w-full"
-          onSubmit={handleSubmit}
-        >
+        <form className="space-y-6 w-full" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
             <div>
               <label
@@ -87,7 +151,7 @@ const Register = () => {
                   onChange={handleChange}
                   type="text"
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
                 />
               </div>
             </div>
@@ -105,7 +169,7 @@ const Register = () => {
                   onChange={handleChange}
                   type="text"
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
                 />
               </div>
             </div>
@@ -115,7 +179,7 @@ const Register = () => {
               htmlFor="email"
               className="block text-sm text-black font-roboto"
             >
-              Email
+              Mail
             </label>
             <div className="mt-1">
               <input
@@ -124,26 +188,44 @@ const Register = () => {
                 onChange={handleChange}
                 type="email"
                 required
-                className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
               />
             </div>
           </div>
           <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
-            <div>
+            <div className="space-y-1">
               <label
                 htmlFor="password"
                 className="block text-sm text-black font-roboto"
               >
                 Contraseña
               </label>
-              <div className="mt-1">
+              <div className="relative w-full">
+                <div className="absolute inset-y-0 right-0 flex items-center px-2">
+                  <input
+                    className="hidden js-password-toggle"
+                    id="toggle"
+                    type="checkbox"
+                  />
+                  <label
+                    className=" px-2 py-1 text-gray- focus:ring-0 font-mono cursor-pointer js-password-label"
+                    htmlFor="toggle"
+                    onClick={handleShowPwd}
+                  >
+                    {showPwd ? (
+                      <img src={ojitoActivo} alt="" />
+                    ) : (
+                      <img src={ojito} alt="" />
+                    )}
+                  </label>
+                </div>
                 <input
                   id="password"
                   name="password"
                   onChange={handleChange}
-                  type="password"
+                  type={showPwd ? "text" : "password"}
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                  className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0 "
                 />
               </div>
             </div>
@@ -152,29 +234,140 @@ const Register = () => {
                 htmlFor="password"
                 className="block text-sm text-black font-roboto"
               >
-                Repetir Contraseña:
+                Repetir Contraseña
               </label>
-              <div className="mt-1">
+              <div className="relative w-full">
+                <div className="absolute inset-y-0 right-0 flex items-center px-2">
+                  <input
+                    className="hidden js-password-toggle"
+                    id="toggle"
+                    type="checkbox"
+                  />
+                  <label
+                    className=" px-2 py-1 text-gray-600 font-mono cursor-pointer js-password-label"
+                    htmlFor="toggle"
+                    onClick={handleShowPwdRepeat}
+                  >
+                    {showPwdRepeat ? (
+                      <img src={ojitoActivo} alt="" />
+                    ) : (
+                      <img src={ojito} alt="" />
+                    )}
+                  </label>
+                </div>
                 <input
                   id="password"
                   name="password2"
                   onChange={handleChange}
-                  type="password"
+                  type={showPwdRepeat ? "text" : "password"}
                   required
-                  className="border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600"
+                  className=" border border-gray-300 block w-full px-5 py-3 text-base text-neutral-600 rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0 "
                 />
               </div>
             </div>
           </div>
 
-          <div className="flex items-center font-roboto justify-center border black rounded-lg bg-gray-200">
-            La contraseña debe contener:
+          <div className="rounded-lg bg-gray-200 py-4 px-5">
+            <div className="flex items-center font-roboto justify-center rounded-lg">
+              <p className="w-full mb-1 text-xs font-roboto font-semibold text-gray-600 ">
+                La contraseña debe contener:
+              </p>
+            </div>
+            <hr className="border-1 border-gray-400 " />
+            <div className="mt-3 grid grid-cols-1 gap-2 lg:grid-cols-2">
+              <div>
+                {upperCase === 0 ? (
+                  <p className="text-xs text-gray-600">
+                    ABC Una letra mayúscula
+                  </p>
+                ) : upperCase === 2 ? (
+                  <>
+                    <div className="flex items-center text-xs text-exito ">
+                      <img src={check} alt="" className="mr-2" />
+                      ABC Una letra mayúscula
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex items-center text-xs text-error ">
+                      <img src={wrong} alt="" className="mr-2" />
+                      ABC Una letra mayúscula
+                    </div>
+                  </>
+                )}
+              </div>
+              <div>
+                <div>
+                  {lowerCase === 0 ? (
+                    <p className="text-xs text-gray-600">
+                      abc Una letra minúscula
+                    </p>
+                  ) : lowerCase === 2 ? (
+                    <>
+                      <div className="flex items-center text-xs text-exito ">
+                        <img src={check} alt="" className="mr-2" />
+                        abc Una letra minúscula
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-center text-xs text-error ">
+                        <img src={wrong} alt="" className="mr-2" />
+                        abc Una letra minúscula
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+              <div>
+                <div>
+                  {number === 0 ? (
+                    <p className="text-xs text-gray-600">123 Un número</p>
+                  ) : number === 2 ? (
+                    <>
+                      <div className="flex items-center text-xs text-exito ">
+                        <img src={check} alt="" className="mr-2" />
+                        123 Un número
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-center text-xs text-error ">
+                        <img src={wrong} alt="" className="mr-2" />
+                        123 Un número
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+              <div>
+                {length === 0 ? (
+                  <p className="text-xs text-gray-600">
+                    *** Mínimo 8 caracteres
+                  </p>
+                ) : length === 2 ? (
+                  <>
+                    <div className="flex items-center text-xs text-exito ">
+                      <img src={check} alt="" className="mr-2" />
+                      *** Mínimo 8 caracteres
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex items-center text-xs text-error ">
+                      <img src={wrong} alt="" className="mr-2" />
+                      *** Mínimo 8 caracteres
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
 
           <div>
             <button
               type="submit"
-              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-white transition duration-500 ease-in-out transform bg-purple-600 rounded-xl hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mb-5 "
+              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-white transition duration-500 ease-in-out transform bg-purple-600 rounded-xl hover:bg-purple-500 focus:ring-0 mb-5 "
             >
               Registrarme
             </button>
@@ -182,14 +375,14 @@ const Register = () => {
           </div>
         </form>
         <div className="w-full">
-          <a href="/login">
+          <Link to="/login">
             <button
               type="submit"
-              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-purple-600 transition duration-500 ease-in-out transform bg-purple-200 rounded-xl hover:bg-purple-300  mt-5"
+              className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-purple-600 transition duration-500 ease-in-out transform bg-purple-200 rounded-xl hover:bg-purple-300 focus:ring-0 mt-5"
             >
               ¿Ya tenés cuenta? Iniciá sesión
             </button>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

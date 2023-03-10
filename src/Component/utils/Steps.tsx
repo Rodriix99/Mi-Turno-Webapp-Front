@@ -3,8 +3,8 @@ import check from "../../assets/icons/check.svg";
 import error from "../../assets/icons/error.svg";
 
 interface stepValue {
-  icon: string;
-  text: string;
+  icon?: string;
+  text?: string;
   bgColor?: string;
   textColor?: string;
 }
