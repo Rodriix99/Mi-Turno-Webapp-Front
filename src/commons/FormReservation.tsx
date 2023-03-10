@@ -65,6 +65,7 @@ const FormReservation = ({ onReservationForm }: FormProps) => {
         <label htmlFor="time">Hora:</label>
         <select id="time" value={time} onChange={handleTimeChange}>
           <option value="">Seleccione una hora</option>
+          <option value="17:00">09:00</option>
           <option value="10:00">10:00</option>
           <option value="11:00">11:00</option>
           <option value="12:00">12:00</option>
@@ -73,6 +74,8 @@ const FormReservation = ({ onReservationForm }: FormProps) => {
           <option value="15:00">15:00</option>
           <option value="16:00">16:00</option>
           <option value="17:00">17:00</option>
+          <option value="15:00">18:00</option>
+          <option value="16:00">19:00</option>
         </select>
       </div>
     </div>

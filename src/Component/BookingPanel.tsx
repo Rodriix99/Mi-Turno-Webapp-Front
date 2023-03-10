@@ -20,7 +20,10 @@ const BookingPanel = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  console.log(selectedDate);
+  
   const [selectedTime, setSelectedTime] = useState<FormData | null>(null);
+  const dispatch = useDispatch();
 
   const handleOnChangeBranch = (branch: Branch) => {
     setSelectedBranch(branch);
@@ -37,21 +40,28 @@ const BookingPanel = () => {
     setCurrentStep(4);
   };
 
-  const handleSubmit = (formData: any) => {
-    axios
-      .post("http://localhost:3001/api/booking/createBooking", formData)
-      .then((response: { data: any }) => {
-        console.log(response.data);
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios
+        .post("http://localhost:3001/api/booking/createBooking", {
+          branch: selectedBranch,
+          date: selectedDate,
+          time: selectedTime,
+        })
+        .then((res) => res.data)
+        
+        dispatch(setBookingData(data));
+        setCurrentStep(5);
+    } catch (error) {
+      console.error(error);
+    }
+    
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}      
-      >
+      <form onSubmit={handleSubmit}>
         <section className="bg-grey1 h-screen w-full px-5 lg:px-10">
           <div className="w-full flex justify-start">
             <h1 className="w-full font-roboto text-xl text-start font-semibold mt-9 mb-5 lg:ml-40 ">
