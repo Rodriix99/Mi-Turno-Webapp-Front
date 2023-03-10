@@ -50,17 +50,16 @@ const BookingPanel = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}      
-      >
-        <section className="bg-grey1 h-screen w-full px-5 lg:px-10">
+      <form onSubmit={handleSubmit}>
+        <section className="bg-grey1 h-screen w-full h-full px-5 lg:px-10">
           <div className="w-full flex justify-start">
             <h1 className="w-full font-roboto text-xl text-start font-semibold mt-9 mb-5 lg:ml-40 ">
               Hacer una reserva
             </h1>
           </div>
 
-          <div className=" lg:flex lg:justify-center w-full sm:flex sm:flex-wrap">
-            <div className="flex flex-col rounded-lg lg:w-679 lg:h-362 lg:mr-8 lg:py-8 lg:px-10 lg:mb-0 mb-2 p-5 bg-white ">
+          <div className=" lg:flex lg:justify-center w-full sm:flex sm:flex-wrap ">
+            <div className="flex flex-col rounded-lg lg:w-679 lg:h-auto lg:mr-8 lg:py-8 lg:px-10 lg:mb-5 mb-2 p-5 bg-white ">
               <div className="flex justify-start flex-col mt-2 ">
                 <h1 className="font-roboto text-lg font-semibold mb-1 text-start ">
                   Reserva
@@ -129,7 +128,7 @@ const BookingPanel = () => {
                     onSelectedBranch={handleOnChangeBranch}
                   />
                 </div>
-                <div className="flex w-full flex-col mt-5 font-roboto">
+                <div className="flex w-full flex-col mt-5 font-roboto text-sm">
                   <FormReservation onReservationForm={handleOnChangeTime} />
                 </div>
                 <div className="flex justify-start mt-6">
@@ -137,7 +136,7 @@ const BookingPanel = () => {
                 </div>
               </div>
             </div>
-            <div className="lg:w-457 lg:ml-3 p-5 rounded-lg bg-white">
+            <div className="lg:w-457 lg:ml-3 p-5 rounded-lg bg-white lg:max-h-80">
               <div className="flex flex-col items-center">
                 <TurnoCalendar
                   onChangeDate={handleOnChangeDate}
@@ -151,7 +150,7 @@ const BookingPanel = () => {
           </div>
         </section>
       </form>
-      <Counter />
+      {/* <Counter /> */}
     </>
   );
 };
