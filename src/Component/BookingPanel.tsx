@@ -21,7 +21,7 @@ const BookingPanel = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedTime, setSelectedTime] = useState<FormData | null>(null);
+  const [selectedForm, setSelectedForm] = useState<FormData | null>(null);
 
   const handleOnChangeBranch = (branch: Branch) => {
     setSelectedBranch(branch);
@@ -33,8 +33,8 @@ const BookingPanel = () => {
     setCurrentStep(3);
   };
 
-  const handleOnChangeTime = (time: FormData) => {
-    setSelectedTime(time);
+  const handleOnChangeForm = (time: FormData) => {
+    setSelectedForm(time);
     setCurrentStep(4);
   };
 
@@ -45,12 +45,13 @@ const BookingPanel = () => {
         .post("http://localhost:3001/api/booking/createBooking", {
           branch: selectedBranch,
           date: selectedDate,
-          time: selectedTime,
+          time: selectedForm,
+          
         })
         .then((res) => res.data);
 
       dispatch(setBookingData(data));
-      setCurrentStep(5);
+      
     } catch (error) {
       console.error(error);
     }
@@ -83,7 +84,7 @@ const BookingPanel = () => {
                     Seleccioná el día en el calendario
                   </h2>
                 )}
-                {selectedDate && (
+                {selectedBranch && selectedDate && (
                   <h2 className="block text-sm text-black font-roboto">
                     Completá el formulario
                   </h2>
@@ -136,16 +137,22 @@ const BookingPanel = () => {
                     onSelectedBranch={handleOnChangeBranch}
                   />
                 </div>
-                <div className="flex w-full flex-col mt-5 font-roboto text-sm">
-                  <FormReservation onReservationForm={handleOnChangeTime} />
-                </div>
-                <div className="flex justify-start mt-6">
+                {selectedDate && 
+                (<div className="flex w-full flex-col mt-5 font-roboto text-sm">
+                  <FormReservation onReservationForm={handleOnChangeForm} />
+                </div>)}
+                
+                {selectedBranch && selectedDate && selectedForm ?
+                  (<div className="flex justify-start mt-6 bg-violet">
                   <Button />
-                </div>
+                </div>) :  (<div className="flex justify-start mt-6">
+                  <Button />
+                </div>)
+                }
               </div>
             </div>
-            <div className="lg:w-457 lg:ml-3 p-5 rounded-lg bg-white lg:max-h-80">
-              <div className="flex flex-col items-center">
+           {selectedBranch && <div className="lg:w-457 lg:ml-3 p-5 rounded-lg bg-white lg:max-h-80">
+               <div className="flex flex-col items-center">
                 <TurnoCalendar
                   onChangeDate={handleOnChangeDate}
                   className="border-none"
@@ -154,7 +161,7 @@ const BookingPanel = () => {
                   <p>Fecha seleccionada: {selectedDate.toLocaleDateString()}</p>
                 )}
               </div>
-            </div>
+            </div>}
           </div>
         </section>
       </form>
