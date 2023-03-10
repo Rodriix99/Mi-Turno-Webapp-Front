@@ -17,6 +17,7 @@ interface Branch {
 }
 
 const BookingPanel = () => {
+  const dispatch = useDispatch();
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -37,15 +38,22 @@ const BookingPanel = () => {
     setCurrentStep(4);
   };
 
-  const handleSubmit = (formData: any) => {
-    axios
-      .post("http://localhost:3001/api/booking/createBooking", formData)
-      .then((response: { data: any }) => {
-        console.log(response.data);
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios
+        .post("http://localhost:3001/api/booking/createBooking", {
+          branch: selectedBranch,
+          date: selectedDate,
+          time: selectedTime,
+        })
+        .then((res) => res.data);
+
+      dispatch(setBookingData(data));
+      setCurrentStep(5);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
