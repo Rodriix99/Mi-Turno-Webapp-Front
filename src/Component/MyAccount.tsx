@@ -5,28 +5,27 @@ import { useDispatch } from "react-redux";
 import { updateUser } from "../store/updateUser";
 import { UserState } from "../store/updateUser";
 
-type buttonEvent = React.MouseEvent<HTMLButtonElement>
+type buttonEvent = React.MouseEvent<HTMLButtonElement>;
 
 const MyAccount = () => {
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.user);
-  
+
   const [fullName, setfullName] = useState("");
   const [email, setEmail] = useState("");
   const [dni, setDni] = useState("");
-  const [phone, setPhone] = useState("");  
+  const [phone, setPhone] = useState("");
 
   const [isDisabled, setIsDisabled] = useState(true);
- 
+
   useEffect(() => {
     setfullName(user.fullName);
     setEmail(user.email);
     setDni(user.dni);
     setPhone(user.phone);
-    
-  }, [user])
-  
-  console.log({fullName, email, dni, phone});
+  }, [user]);
+
+  console.log({ fullName, email, dni, phone });
 
   const handleEdit = (e: buttonEvent) => {
     e.preventDefault();
@@ -34,7 +33,6 @@ const MyAccount = () => {
     setIsDisabled(!isDisabled);
   };
   console.log(isDisabled);
-  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,12 +48,13 @@ const MyAccount = () => {
             phone: phone,
           }
         );
-        const options = 
-          { id: data.id,
-           fullName: data.fullName,
-           email: data.email,
-           dni: data.dni,
-           phone: data.phone };
+        const options = {
+          id: data.id,
+          fullName: data.fullName,
+          email: data.email,
+          dni: data.dni,
+          phone: data.phone,
+        };
         dispatch(updateUser(options));
       }
       setIsDisabled(true);
@@ -158,7 +157,7 @@ const MyAccount = () => {
           <div>
             <button
               onClick={handleEdit}
-              className="text-purple-600"
+              className="font-roboto text-sm font-bold text-purple-600"
             >
               Editar datos
             </button>
