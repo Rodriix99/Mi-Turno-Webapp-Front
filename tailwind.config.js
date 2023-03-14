@@ -30,6 +30,7 @@ module.exports = {
       boxShadow: {
         rl: "0 0 24px rgba(0, 0, 0, 0.12)",
         nav: "0px 0px 12px rgba(0, 0, 0, 0.08)",
+        timer: "0px 3px 12px rgba(0, 0, 0, 0.2)",
       },
       width: {
         679: "679px",
