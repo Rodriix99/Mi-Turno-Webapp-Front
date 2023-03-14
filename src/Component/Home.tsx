@@ -1,7 +1,7 @@
-import UnsuccessLogin from "../commons/UnsuccessLogin";
+import UnsuccessRegister from "../commons/alerts/UnsuccessRegister";
 
 const Home = () => {
-  return <UnsuccessLogin />;
+  return <UnsuccessRegister />;
 };
 
 export default Home;

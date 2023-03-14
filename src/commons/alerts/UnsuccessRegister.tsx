@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-
-const UnsuccessLogin = ({ setIsOpenErr }: any) => {
+const UnsuccessRegister = ({ setIsOpenErr }: any) => {
   return (
     <div
       className="min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover"
@@ -27,10 +25,10 @@ const UnsuccessLogin = ({ setIsOpenErr }: any) => {
             </svg>
 
             <h2 className="text-lg font-semibold pt-4 pb-1 font-roboto ">
-              Error al iniciar sesion
+              Error al registrarse
             </h2>
             <p className="text-sm font-normal font-roboto">
-              Los datos ingresados son incorrectos
+              Mail o DNI ya existentes
             </p>
           </div>
 
@@ -48,4 +46,4 @@ const UnsuccessLogin = ({ setIsOpenErr }: any) => {
   );
 };
 
-export default UnsuccessLogin;
+export default UnsuccessRegister;
