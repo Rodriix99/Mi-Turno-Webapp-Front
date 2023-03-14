@@ -45,6 +45,7 @@ const FormReservation = ({ onReservationForm }: FormProps) => {
           id="time"
           className="w-full p-2.5 text-gray-500 bg-white border rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
           onChange={handleChange}
+          required
         >
           <option value=""></option>
           <option value="10:00">10:00</option>
@@ -71,6 +72,7 @@ const FormReservation = ({ onReservationForm }: FormProps) => {
             id="name"
             className="w-full text-sm p-2.5 text-gray-500 bg-white border rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
             onChange={handleChange}
+            required
           />
         </div>
         <div>
@@ -86,6 +88,7 @@ const FormReservation = ({ onReservationForm }: FormProps) => {
             id="phone"
             className="w-full text-sm w-full p-2.5 text-gray-500 bg-white border rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
             onChange={handleChange}
+            required
           />
         </div>
       </div>
@@ -98,10 +101,11 @@ const FormReservation = ({ onReservationForm }: FormProps) => {
         </label>
         <input
           name="email"
-          type="text"
+          type="email"
           className="w-full text-sm p-2.5 text-gray-500 bg-white border rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
           id="email"
           onChange={handleChange}
+          required
         />
       </div>
     </div>
