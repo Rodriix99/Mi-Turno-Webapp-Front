@@ -1,7 +1,7 @@
-import UnsuccessRegister from "../commons/alerts/UnsuccessRegister";
+import EndTime from "../commons/alerts/EndTime";
 
 const Home = () => {
-  return <UnsuccessRegister />;
+  return <EndTime />;
 };
 
 export default Home;
