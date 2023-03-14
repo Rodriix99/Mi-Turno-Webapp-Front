@@ -19,24 +19,6 @@ function Counter() {
     return () => clearInterval(intervalo);
   }, [contador, reservaConfirmada]);
 
-  /* const realizarReserva = () => {
-    axios
-      .post("http://localhost:3001/api/booking/createBooking", {
-        fullName: "",
-        email: "",
-        phone: "",
-        date: "",
-        schedule: "",
-      })
-      .then((response) => {
-        console.log(response.data);
-        setReservaConfirmada(true);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }; */
-
   const minutosRestantes = Math.floor(contador / 60);
   const segundosRestantes = contador % 60;
 
@@ -45,11 +27,10 @@ function Counter() {
       {!reservaConfirmada ? (
         <div>
           <p>
-            Tiempo restante: {minutosRestantes}:
-            {segundosRestantes < 10 ? "0" : ""}
-            {segundosRestantes} minutos
+            Quedan: {minutosRestantes < 10 ? "0" : ""}
+            {minutosRestantes}:{segundosRestantes < 10 ? "0" : ""}
+            {segundosRestantes}
           </p>
-     
         </div>
       ) : (
         <p>Reserva confirmada</p>
