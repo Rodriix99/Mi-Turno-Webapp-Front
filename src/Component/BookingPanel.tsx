@@ -9,6 +9,7 @@ import { setBookingData } from "../store/bookingData";
 import FormReservation from "../commons/FormReservation";
 import axios from "axios";
 import Counter from "../commons/Counter";
+import { FormData } from "../commons/FormReservation";
 
 interface Branch {
   id: number;
@@ -21,7 +22,12 @@ const BookingPanel = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedForm, setSelectedForm] = useState<FormData | null>(null);
+  const [selectedForm, setSelectedForm] = useState<FormData>({
+    name: "",
+    phone: "",
+    email: "",
+    time: "",
+  });
 
   const handleOnChangeBranch = (branch: Branch) => {
     setSelectedBranch(branch);
@@ -33,9 +39,19 @@ const BookingPanel = () => {
     setCurrentStep(3);
   };
 
-  const handleOnChangeForm = (time: FormData) => {
-    setSelectedForm(time);
-    setCurrentStep(4);
+  const handleOnChangeForm = (form: FormData) => {
+    console.log(form);
+    setSelectedForm(form);
+    if (
+      form.name === "" ||
+      form.phone === "" ||
+      form.email === "" ||
+      form.time === ""
+    ) {
+      setCurrentStep(3);
+    } else {
+      setCurrentStep(4);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,12 +62,11 @@ const BookingPanel = () => {
           branch: selectedBranch,
           date: selectedDate,
           time: selectedForm,
-          
         })
         .then((res) => res.data);
+      console.log(data);
 
       dispatch(setBookingData(data));
-      
     } catch (error) {
       console.error(error);
     }
@@ -60,7 +75,7 @@ const BookingPanel = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <section className="bg-grey1 h-screen w-full h-full px-5 lg:px-10">
+        <section className="bg-grey1 h-[175vh] w-full px-5 md:h-screen lg:px-10">
           <div className="w-full flex justify-start">
             <h1 className="w-full font-roboto text-xl text-start font-semibold mt-9 mb-5 lg:ml-40 ">
               Hacer una reserva
@@ -117,7 +132,7 @@ const BookingPanel = () => {
                     />
                   )}
 
-                  {currentStep > 3 && selectedDate ? (
+                  {currentStep > 3 && selectedDate && selectedForm ? (
                     <Steps icon="check" text="Completá el formulario" />
                   ) : (
                     <Steps
@@ -137,31 +152,41 @@ const BookingPanel = () => {
                     onSelectedBranch={handleOnChangeBranch}
                   />
                 </div>
-                {selectedDate && 
-                (<div className="flex w-full flex-col mt-5 font-roboto text-sm">
-                  <FormReservation onReservationForm={handleOnChangeForm} />
-                </div>)}
-                
-                {selectedBranch && selectedDate && selectedForm ?
-                  (<div className="flex justify-start mt-6 bg-violet">
-                  <Button />
-                </div>) :  (<div className="flex justify-start mt-6">
-                  <Button />
-                </div>)
-                }
-              </div>
-            </div>
-           {selectedBranch && <div className="lg:w-457 lg:ml-3 p-5 rounded-lg bg-white lg:max-h-80">
-               <div className="flex flex-col items-center">
-                <TurnoCalendar
-                  onChangeDate={handleOnChangeDate}
-                  className="border-none"
-                />
                 {selectedDate && (
-                  <p>Fecha seleccionada: {selectedDate.toLocaleDateString()}</p>
+                  <div className="flex w-full flex-col mt-5 font-roboto text-sm">
+                    <FormReservation onReservationForm={handleOnChangeForm} />
+                  </div>
+                )}
+
+                {selectedBranch &&
+                selectedDate &&
+                selectedForm &&
+                currentStep >= 4 ? (
+                  <div className="flex justify-start mt-6">
+                    <Button enable={true} />
+                  </div>
+                ) : (
+                  <div className="flex justify-start mt-6">
+                    <Button enable={false} />
+                  </div>
                 )}
               </div>
-            </div>}
+            </div>
+            {selectedBranch && (
+              <div className="lg:w-457 lg:ml-3 p-5 rounded-lg bg-white lg:max-h-[21rem]">
+                <div className="flex flex-col items-center">
+                  <TurnoCalendar
+                    onChangeDate={handleOnChangeDate}
+                    className="border-none"
+                  />
+                  {selectedDate && (
+                    <p className="mt-2">
+                      Fecha seleccionada: {selectedDate.toLocaleDateString()}
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </section>
       </form>

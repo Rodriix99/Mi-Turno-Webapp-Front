@@ -1,14 +1,14 @@
 import { useInput } from "../Hooks/useInput";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/user";
 import ojito from "../assets/icons/openEye.svg";
 import ojitoActivo from "../assets/icons/openEye2.svg";
 import { Link } from "react-router-dom";
-import UnsuccessLogin from "../commons/UnsuccessLogin";
-import SuccessLogin from "../commons/SuccessLogin";
+import UnsuccessLogin from "../commons/alerts/UnsuccessLogin";
+import SuccessLogin from "../commons/alerts/SuccessLogin";
 
 interface FormData {
   email: string;
@@ -29,8 +29,11 @@ function Login() {
 
   const { email, password } = formulario;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
+  ) => {
     e.preventDefault();
+    console.log("login");
     axios
       .post("http://localhost:3001/api/users/login", {
         email: email,
@@ -142,24 +145,27 @@ function Login() {
             </div>
 
             <div>
-              <button
-                type="submit"
-                className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-white transition duration-500 ease-in-out transform bg-purple-600 rounded-xl hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mb-5 "
-              >
-                Ingresar
-              </button>
+              <Link to="/bookingPanel">
+                <button
+                  onClick={handleSubmit}
+                  type="submit"
+                  className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-white transition duration-500 ease-in-out transform bg-purple-600 rounded-xl hover:bg-purple-500 focus:outline-none focus:ring-violet-500 mb-5 "
+                >
+                  Ingresar
+                </button>
+              </Link>
               <hr className="border-1 border-gray-300 " />
             </div>
           </form>
           <div className="w-full">
-            <a href="/register">
+            <Link to="/register">
               <button
                 type="submit"
                 className="flex items-center justify-center w-full px-10 py-4 text-base font-roboto text-center text-purple-600 transition duration-500 ease-in-out transform bg-purple-200 rounded-xl hover:bg-purple-300  mt-5 "
               >
                 ¿No tenés cuenta? Registrate
               </button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
