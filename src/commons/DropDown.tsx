@@ -9,7 +9,7 @@ interface DropDownProps {
   onSelectedBranch: (branch: any) => void;
 }
 
-type ClickEvent = React.MouseEvent<HTMLSelectElement>;
+type ChangeEvent = React.ChangeEvent<HTMLSelectElement>;
 
 const Dropdown = (props: DropDownProps) => {
   const [array, setArray] = useState([]);
@@ -27,7 +27,7 @@ const Dropdown = (props: DropDownProps) => {
       });
   }, []);
 
-  const handleSelect = (e: ClickEvent) => {
+  const handleSelect = (e: ChangeEvent) => {
     const target = e.target as HTMLSelectElement;
     setSelectedBranch(target.value);
     props.onSelectedBranch(target.value);
@@ -39,7 +39,7 @@ const Dropdown = (props: DropDownProps) => {
       <select
         required
         className="w-full p-2.5 text-gray-500 bg-white border rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0 "
-        onClick={handleSelect}
+        onChange={handleSelect}
       >
         <option selected></option>
         {array.length === 0

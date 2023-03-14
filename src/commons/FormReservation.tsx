@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface FormProps {
   onReservationForm: (data: any) => void;
 }
 
-interface FormData {
+export interface FormData {
   name: string;
   phone: string;
   email: string;
@@ -12,39 +12,24 @@ interface FormData {
 }
 
 const FormReservation = ({ onReservationForm }: FormProps) => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [time, setTime] = useState("");
+  const [form, setForm] = useState<FormData>({
+    name: "",
+    phone: "",
+    email: "",
+    time: "",
+  });
 
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPhone(e.target.value);
-  };
-
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
-
-  const handleTimeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTime(e.target.value);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData: FormData = {
-      name,
-      phone,
-      email,
-      time,
-    };
-
-    onReservationForm(formData);
-  };
+  useEffect(() => {
+    onReservationForm(form);
+  }, [form]);
 
   return (
     <div className="relative w-full">
@@ -56,10 +41,10 @@ const FormReservation = ({ onReservationForm }: FormProps) => {
           Hora
         </label>
         <select
+          name="time"
           id="time"
           className="w-full p-2.5 text-gray-500 bg-white border rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
-          value={time}
-          onChange={handleTimeChange}
+          onChange={handleChange}
         >
           <option value=""></option>
           <option value="10:00">10:00</option>
@@ -81,11 +66,11 @@ const FormReservation = ({ onReservationForm }: FormProps) => {
             Nombre y Apellido
           </label>
           <input
+            name="name"
             type="text"
             id="name"
             className="w-full text-sm p-2.5 text-gray-500 bg-white border rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
-            value={name}
-            onChange={handleNameChange}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -96,11 +81,11 @@ const FormReservation = ({ onReservationForm }: FormProps) => {
             Teléfono
           </label>
           <input
+            name="phone"
             type="text"
             id="phone"
             className="w-full text-sm w-full p-2.5 text-gray-500 bg-white border rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
-            value={phone}
-            onChange={handlePhoneChange}
+            onChange={handleChange}
           />
         </div>
       </div>
@@ -112,11 +97,11 @@ const FormReservation = ({ onReservationForm }: FormProps) => {
           Email
         </label>
         <input
+          name="email"
           type="text"
           className="w-full text-sm p-2.5 text-gray-500 bg-white border rounded-lg hover:border-gray-400 focus:border-purple-600 focus:ring-0"
           id="email"
-          value={email}
-          onChange={handleEmailChange}
+          onChange={handleChange}
         />
       </div>
     </div>
